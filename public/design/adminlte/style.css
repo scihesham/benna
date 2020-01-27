@@ -1,0 +1,258 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+th{text-align: center}
+
+.message{
+    margin-top: 15px
+}
+.message button{
+    float:left;
+}
+
+/**************************** start selectbox ****************************/
+.selectboxit-container{ width:100% !important}
+.selectboxit-container .selectboxit{width:100% !important;height: 38px;}
+.selectboxit-arrow-container{left:0 !important; right: auto !important}
+.selectboxit-text{float: right !important}
+.selectboxit-container .selectboxit-options{text-align: right !important}
+/*
+.selectboxit-arrow-container {left: 5px; right: auto}
+.selectboxit-text{float: right; padding-right: 6px; padding-top: 4px;}
+.selectboxit-option{text-align: right; }
+*/
+/**************************** End selectbox ****************************/
+
+.edit-modal{
+    margin-top: 30px
+}
+.modal-body.body-edit{
+    padding-bottom: 0
+}
+.info-box-number{
+    margin: 10px !important
+}
+select.form-control{
+    height: 36px 
+}
+.cont-td{
+    max-height: 45px;
+    overflow-y: hidden;
+}
+.loading {
+    display: inline-block;
+    position: fixed;
+    width: 64px;
+    height: 64px;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+}
+.loading div {
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    width: 13px;
+    background: #0fadce;
+    animation: loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loading div:nth-child(1) {
+    left: 6px;
+    animation-delay: -0.24s;
+}
+.loading div:nth-child(2) {
+    left: 26px;
+    animation-delay: -0.12s;
+}
+.loading div:nth-child(3) {
+    left: 45px;
+    animation-delay: 0s;
+}
+@keyframes loading {
+    0% {
+        top: 6px;
+        height: 51px;
+    }
+    50%, 100% {
+        top: 19px;
+        height: 26px;
+    }
+}
+
+/* End loader */
+
+/* Start overlay */
+.overlay{
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8888;
+}
+
+
+.img_content{
+    margin-bottom:15px;
+}
+
+.img_content img{max-width: 250px;  border-radius: 5px;}
+
+.delete_img{
+    float: left;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu{
+    width: 325px;}
+
+
+
+/* datatable */
+.dattable .col-sm-12{margin-top: 10px !important}
+.table-bordered{border-color: #d1dfec !important}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border-color: #d1dfec !important}
+
+.table-bordered>thead>tr>th, .table-bordered>thead>tr>td {
+    border-bottom-width: 1px !important;
+}
+
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+/* normal table */
+.center-vc{vertical-align: middle !important}
+
+.notification{
+    font-size: 20px;
+    padding-top: 15px;
+}
+
+.hide{
+    display: none
+}
+
+.dropdown-menu hr{
+   margin: 0 
+}
+
+.dropdown-menu hr:last-child{
+    display: none !important
+}
+
+.notification-content{
+    padding-top:27px;
+}
+
+.receipt-content{
+    height: 200px; cursor: pointer
+}
+
+.invoice-content{
+    height: 160px; cursor: pointer
+}
+.receipt-content:hover, .invoice-content:hover{
+    background: #f1f1f1
+}
+
+.notification-menu{
+    max-height: 450px; overflow-y: auto;
+}
+
+.notification-menu .dropdown-menu>li>a:hover{
+    background: #f1f1f1
+}
+
+.dropdown-menu>li>a:hover{
+    background: #f1f1f1
+}
+
+.message-owner{
+   color: #9a9a9a; 
+}
+
+.notification-content h4{
+   display: inline-block; font-size: 16px
+}
+
+.notification-content h4, .notification-content span{
+    font-weight: bold
+}
+
+.notification-content span{
+    color: #75787d
+}
+
+.notification-menu .title {
+/*    color: #f90e0e;*/
+    font-weight: bold;
+    margin-top: 0;
+    padding-top: 16px;
+    font-size: 20px;
+}
+
+.navbar-nav>.user-menu.notification-menu>.dropdown-menu {
+    width: 335px; max-height: 400px; overflow-y: auto
+}
+
+.invoice-circle {
+    width: 11px;
+    height: 11px;
+    background: red;
+    position: absolute;
+    border-radius: 16px;
+    top: 10px;
+    left: 16px;
+    text-align: center;
+    color: #FFF;
+}
+
+.overdate-invoice-content{
+    margin-top: 17px
+}
+
+.overdate-invoice a.seen-overdate-invoice:hover{
+    background: #0c8a50
+}
+
+.overdate-invoice:hover{
+    background: #f1f1f1;
+}
+a.seen-overdate-invoice{
+    text-align:center; color: #FFF !important; width: 90%; margin: 0 auto; margin-top: 10px; padding: 7px !important
+}
+
+.overdate-invoice{
+    height: 190px
+}
+
+.overdate-invoice h4{
+   display: inline-block; font-size: 16px; font-weight: bold
+}
+
+.notification-menu{
+    overflow-x: hidden
+}
+
