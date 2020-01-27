@@ -1,0 +1,1282 @@
+
+body{
+    font-family: "A Jannat LT";
+}
+
+.msg{
+    overflow: hidden
+}
+.msg small{
+    position: absolute;
+    left: 9px;
+    bottom: 1px;
+    color: #ff1818
+}
+
+.msg .hours{
+    position: absolute;
+    right: 9px;
+    bottom: 1px;
+    color: #ff1818
+}
+/*
+.msg:last-child hr{
+    visibility: hidden
+}
+*/
+.hide{
+    display: none
+}
+.msg-circle{
+    width: 17px;
+    height: 20px;
+    background: red;
+    /* float: left; */
+    /* display: none; */
+    position: absolute;
+    border-radius: 16px;
+    top: 6px;
+    left: 4px;
+    text-align: center;
+    color: #FFF;
+}
+
+
+.active .msg-circle {
+    top: 6px;
+    left: 2px;
+}
+
+.pro-circle, .offer-circle{
+    width: 10px;
+    height: 10px;
+    background: red;
+    /* float: left; */
+    /* display: none; */
+    position: absolute;
+    border-radius: 16px;
+    top: 12px;
+    left: 16px;
+    text-align: center;
+    color: #FFF;
+}
+
+.active .pro-circle, .active .offer-circle {
+    top: 12px;
+    left: 15px;
+}
+
+button.close{
+    float: left
+}
+
+.navbar-brand{
+    padding: 0px;
+}
+.navbar-default{
+    background-color: #f0f0f0;
+    border:none;
+}
+
+.navbar-default .navbar-brand{
+    margin-top: 7px;
+}
+.navbar{
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+    color: white;
+    background-color: #7cbb29;
+    border-radius: 9px;
+/*
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 7px;
+*/
+}
+
+
+/*==============================================*/
+
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: #eee;
+    }
+    .navbar>.container .navbar-brand-centered,
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}
+
+#second_nav{
+    padding-bottom: 0px;
+    background-color: #7cbb29;
+}
+
+#second_nav .navbar-nav>li>a
+{
+    color: white;
+}
+/*===============================================*/
+
+
+
+/* adjust body when menu is open */
+body.slide-active {
+    overflow-x: hidden
+}
+/*first child of #page-content so it doesn't shift around*/
+.no-margin-top {
+    margin-top: 0px!important
+}
+/*wrap the entire page content but not nav inside this div if not a fixed top, don't add any top padding */
+#page-content {
+    position: relative;
+    padding-top: 70px;
+    left: 0;
+}
+#page-content.slide-active {
+    padding-top: 0
+}
+/* put toggle bars on the left :: not using button */
+#slide-nav .navbar-toggle {
+    cursor: pointer;
+    position: relative;
+    line-height: 0;
+    float: left;
+    margin: 0;
+    width: 30px;
+    height: 40px;
+    padding: 10px 0 0 0;
+    border: 0;
+    background: transparent;
+}
+/* icon bar prettyup - optional */
+#slide-nav .navbar-toggle > .icon-bar {
+    width: 100%;
+    display: block;
+    height: 3px;
+    margin: 5px 0 0 0;
+}
+#slide-nav .navbar-toggle.slide-active .icon-bar {
+    background: orange
+}
+.navbar-header {
+    position: relative
+}
+/* un fix the navbar when active so that all the menu items are accessible */
+.navbar.navbar-fixed-top.slide-active {
+    position: relative
+}
+/* screw writing importants and shit, just stick it in max width since these classes are not shared between sizes */
+@media (max-width:767px) {
+    #slide-nav .container {
+        margin: 0!important;
+        padding: 0!important;
+        height:100%;
+    }
+
+
+
+    #slide-nav .navbar-header {
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+
+    #slide-nav .navbar.slide-active {
+        position: absolute;
+        width: 80%;
+        top: -1px;
+        z-index: 1000;
+
+    }
+    #slide-nav #slidemenu {
+        background: black;
+        left: -100%;
+        width: 80%;
+        min-width: 0;
+
+        padding-left: 0;
+
+        top: -8px;
+        margin: 0;
+
+        height: 100%;
+        position: fixed;
+        z-index: 99999999999;
+    }
+
+    .navbar-default .navbar-nav>li>a{
+
+        color: white;
+    }
+
+    .navbar-default .navbar-nav>li>a>i{
+        float: right;
+    }
+
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+        background-color: black;
+        color: white;
+    }
+    .navbar-default .navbar-nav>li>a:hover{
+        color: white;
+
+    }
+    #slide-nav #slidemenu .navbar-nav {
+        min-width: 0;
+        width: 100%;
+        margin: 0;
+        margin-top: 50px;
+    }
+    #slide-nav #slidemenu .navbar-nav .dropdown-menu li a {
+        min-width: 0;
+        width: 80%;
+        white-space: normal;
+    }
+    #slide-nav {
+        border-top: 0
+    }
+    #slide-nav.navbar-inverse #slidemenu {
+        background: #333;
+    }
+    /* this is behind the navigation but the navigation is not inside it so that the navigation is accessible and scrolls*/
+    #navbar-height-col {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        bottom:0;
+        width: 80%;
+        left: -80%;
+        background: #f7f7f7;
+    }
+    #navbar-height-col.inverse {
+        background: #333;
+        z-index: 1;
+        border: 0;
+    }
+}
+@media (min-width:768px) {
+    .navbar.navbar-fixed-top.slide-active {
+        position: fixed
+    }
+    .navbar-header {
+        left: 0!important
+    }
+
+}
+@media (min-width: 768px)
+{
+    .navbar-nav>li {
+        float: right;
+    }
+    }
+
+@media (min-width: 768px)
+{
+    .navbar-nav {
+        float: left;
+        margin: 0;
+        padding-top: 14px;
+        font-size: 14px;
+    }
+
+
+}
+
+@media (min-width: 768px) {
+    .navbar-header {
+        float: right;
+    }
+}
+
+.dropdown-menu{
+    right: 0px;
+}
+
+.dropdown-menu>li>a{
+    text-align: right;
+    font-size: 10px;
+}
+
+
+.navbar-nav>li>.dropdown-menu{
+    font-size: inherit;
+}
+@media ( min-width: 768px) {
+
+    .navbar-nav>li>.dropdown-menu{
+        font-size: 17px;
+    }
+
+}
+/*==========end of responsive and navbar =========================================================*/
+
+
+
+
+.slid{
+
+    position: absolute;
+    right: 203px;
+    top: 129px;
+    text-align: center;
+    z-index: 55555555;
+
+}
+.coin-slider{
+
+    display: none;
+}
+
+@media( min-width: 768px){
+
+    .coin-slider{
+        display: block;
+    }
+
+
+
+}
+
+.slid h3{
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #7cbb29;
+    padding: 10px 10px 10px 10px;
+    box-shadow: -5px 7px 0px 1px #7cbb29;
+}
+
+.slid span{
+    background-color: #7cbb29;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    margin-right: -176px;
+    font-size: 11px;
+}
+/*==================start style of select =====================================================*/
+
+.search{
+    background-color: inherit;
+    padding: 10px 0px 0px 0px;
+    border-radius: 8px;
+    margin-left: 0px;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+@media ( min-width: 768px) {
+    .search{
+        background-color: #dddddd96;
+        margin-left: 135px;
+        width: 100%;
+
+    }
+
+
+}
+
+
+@media (min-width: 1200px) {
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
+        float: right;
+
+    }
+}
+
+
+/*=======================end style of select===============================================================*/
+
+/*=====================start style of data ==========================================================*/
+@media (min-width: 768px) {
+    .lead {
+        font-size: 19px;
+    }
+}
+.lead{
+    line-height: 1.1;
+}
+
+
+.words h3{
+    color: #7cbb29;
+    font-weight: 800;
+}
+
+.words p{
+    font-size: 14px
+}
+/*======================end styke of data ========================================*/
+
+/*=======start div with background =====================*/
+
+
+@media (min-width: 992px) {
+    .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+        float: right;
+    }
+}
+
+.loader{
+
+    position: sticky;
+    left: 100px;
+    top: -26px;
+
+
+
+}
+
+@media (min-width: 992px){
+    .loader{
+        position: absolute;
+
+    }
+}
+
+
+/*======= end div of background  and loader =========================*/
+
+/*================ start tabs ===================================*/
+
+.build {
+    background-color: #7cbb29;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 10px;
+    color: white;
+    width: 75%;
+    transition: transform 2s;
+
+}
+
+.build:hover {
+    cursor: pointer;
+    background-color:#7cbb29;
+
+
+}
+.build img{
+    width: 81%;
+    margin-bottom: -31px;
+}
+
+.col-xs-12 {
+
+    margin-bottom: 10px;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #7cbb29;
+    border-color: #7cbb29;
+}
+/*=================  end of tabs ===============================*/
+
+
+/*====== start style of companies =============================*/
+.company{
+    margin-top: 10px;
+}
+.company img{
+    border: solid 1px lightgray;
+    border-radius: 16px;
+    filter: grayscale(100%);
+    transition: filter 1s;
+    cursor: pointer;
+    width: 75%;
+
+
+}
+
+.company img:hover{
+    filter: grayscale(0%);
+}
+
+
+
+.col-xs-6{
+    margin-bottom: 10px;
+}
+
+
+.comp{
+    transition: transform 1s;
+}
+
+
+
+
+
+.comp:hover{
+    transform:scale(1.1);
+}
+/*==========end style of companies ===================================*/
+
+/*=============== start footer ================================*/
+
+
+footer {
+    background-color:#7cbb29;
+    min-height:350px;
+}
+.footer-col
+{
+    margin-top:50px;
+}
+.logofooter
+{
+    margin-bottom:10px;
+    font-size:25px;
+    color:#fff;
+    font-weight:700;
+}
+
+.footer-col p
+{
+    color:#fff;
+    font-size:12px;
+    margin-bottom:15px;
+
+}
+.footer-col p i
+{
+    width:20px;
+    color:#999;
+}
+
+.footer-ul {
+    list-style-type:none;
+    padding-left:0;
+    margin-left:2px;
+}
+.footer-ul li {
+    line-height:29px;
+    font-size:12px;
+}
+.footer-ul li a {
+    color:white;
+    transition: color 0.2s linear 0s, background 0.2s linear 0s;
+}
+.footer-ul i {
+    margin-right:10px;
+}
+.footer-ul li a:hover {
+    transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f;
+}
+
+
+
+.heading7 {
+    font-size:21px;
+    font-weight:700;
+    color: white;
+    margin-bottom:22px;
+    margin-right: 36px;
+}
+.post p {
+    font-size:12px;
+    color:#FFF;
+    line-height:20px;
+}
+.post p span {
+    display:block;
+    color:#8f8f8f;
+}
+.bottom_ul {
+    list-style-type:none;
+    float:right;
+    margin-bottom:0;
+}
+.bottom_ul li {
+    float:left;
+    line-height:40px;
+}
+.bottom_ul li:after {
+    content:"/";
+    color:#FFF;
+    margin-right:8px;
+    margin-left:8px;
+}
+.bottom_ul li a {
+    color:#FFF;
+    font-size:12px;
+}
+
+.input-group-addon:first-child {
+    border-right: 0;
+    background-color: #5fbb1e;
+    color: white;
+    border: 0px;
+}
+/*================= end footer =================================*/
+
+.copyright {
+    min-height:40px;
+    background-color:#7cbb29;
+}
+.copyright p {
+
+    color:#FFF;
+    padding:10px 0;
+    margin-bottom:0;
+
+}
+
+/*====================animated counter ===========================================*/
+
+.counter:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    filter: brightness(80%);
+    background: url("../images/back_special.jpg") no-repeat ;
+    background-position:0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.counters:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    filter: brightness(50%);
+    background: url("../images/Construction_1.jpg") no-repeat ;
+    background-position:0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.counter
+{  position: relative;
+    z-index: 999999;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.counters{
+    position: relative;
+    z-index: 999999;
+    text-align: center;
+}
+
+.employees,.customer,.design,.order
+{
+    margin-top: 30px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.counter-count {
+
+    font-size: 15px;
+    background-color: #00b3e700;
+    border: solid 3px #7cbb29;
+    border-radius: 50%;
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    line-height: 61px;
+    width: 107px;
+    height: 101px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: inline-block;
+    padding-top: 19px;
+}
+
+.employee-p,.customer-p,.order-p,.design-p
+{
+    font-size: 13px;
+    color: white;
+    line-height: 0px;
+    position: absolute;
+    top: 78px;
+    left: 45%;
+}
+.employee-c{
+    font-size: 11px;
+    color: white;
+    line-height: 16px;
+    position: absolute;
+    top: 16px;
+    left: 45%;
+}
+
+@media (min-width: 768px){
+    .employee-p,.customer-p,.order-p,.design-p,.employee-c{
+        left:42%
+
+    }
+}
+
+
+
+
+/*====================================================================*/
+
+
+/*================order page ==========================================*/
+
+.order{
+    margin-top: 30px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.ordercompany{
+    font-size: 24px;
+    color: white;
+    line-height: 34px;
+    position: absolute;
+    display: none;
+
+
+}
+
+
+@media(min-width: 768px){
+    .ordercompany{
+        display: block;
+    }
+}
+/*================search div ====================================*/
+
+.help {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 70%;
+}
+.help input{
+background-color: #f0f0f0;
+}
+
+
+.help i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.tables{
+
+
+    padding: 12px;
+    position: relative;
+}
+.tables table td span{
+
+    padding-right: 14px;
+    font-size: 18px;
+}
+
+.num{
+    position: absolute;
+    top: 18px;
+    left: 27px;
+    font-size: 13px;
+}
+
+.bord{
+    border: solid 1px lightgray;
+    margin-top: 32px;
+}
+
+
+/*==============================*/
+
+/*========== start div of most watch=================*/
+
+.watch{
+    line-height: 0.8;
+    border: solid 1px lightgray;
+    padding: 6px 6px 0px 0px;
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+
+.size{
+    line-height: 0.8;
+    border: solid 1px lightgray;
+    padding: 6px 6px 0px 0px;
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+
+.size img:hover{
+    transform: scale(1.03);
+}
+
+.watch img:hover{
+    transform: scale(1.03);
+}
+
+.watch img{
+    float: right;
+    width: 31%;
+    border: solid 1px lightgray;
+    margin-bottom: 7px;
+    border-radius: 4px;
+    transition: transform 1s;
+
+}
+
+.size img{
+    float: right;
+    width: 98%;
+    border: solid 1px lightgray;
+    margin-bottom: 7px;
+    height:130px;
+    transition: transform 1s;
+}
+
+@media(min-width: 768px){
+    .watch img{
+        width: 15%;
+    }
+    .size img{
+        width: 20%;
+    }
+}
+
+.detail{
+
+    float: right;
+    margin-top: 11px;
+    text-align: right;
+    margin-right: 11px;
+    line-height: 30px;
+}
+
+
+.detail_p{
+    padding-top: 5px
+}
+
+.detai_div{
+
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: 2;
+
+}
+
+.iconss{
+    float: left;
+    margin-left: 12px;
+    margin-top: 0px;
+}
+
+@media(min-width:768px){
+    .iconss{
+        margin-top: 109px;
+    }
+}
+
+.iconss p{
+    color: #3a58a0;
+}
+
+.stars {
+   color: gold;
+}
+
+.dropdown-menu{
+    z-index: 9999999999;
+}
+/*============ end most watch div ================*/
+
+
+/*==============end page of order company ===========*/
+
+/*============= start page of detail =================*/
+
+.basket{
+    float: none;
+    margin-left: 0px;
+    background-color: #3a58a0;
+    border: none;
+    border-radius: 16px;
+}
+
+@media(min-width: 768px) {
+
+    .basket{
+        margin-left: 50px;
+        float: left;
+    }
+
+}
+
+.phone span{
+    background-color: #3a58a0;
+
+    border-radius: 16px;
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.phone span i{
+    color: white;
+}
+
+/*===============animation style =======================================*/
+ .second  , .six ,.sev{
+    -vendor-animation-duration: 2s;
+    animation-duration: 2s;
+}
+.first,.second{
+    -vendor-animation-duration: 4s;
+    animation-duration: 4s;
+}
+
+.comp ,.fir, .order{
+    -vendor-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.comp2{
+
+    animation-duration: 2s;
+    animation-delay: 1s;
+
+}
+.comp3{
+    animation-duration: 2s;
+    animation-delay: 2s;
+}
+.comp4{
+    animation-duration: 2s;
+    animation-delay: 3s;
+}
+
+.loader, .up, .down,.fiv,.four1,.four2 {
+    -vendor-animation-duration: 4s;
+    animation-duration: 4s;
+}
+
+.four3,.four4{
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+.four5, .four6{
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+.four7, .four8{
+    animation-duration: 3s;
+    animation-delay: 6s;
+}
+.three{
+    -vendor-animation-duration: 4s;
+    animation-duration: 4s;
+}
+
+
+.si1{
+    animation-duration: 3s;
+
+}
+.si2{
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
+.si3{
+    animation-duration: 3s;
+    animation-delay: 3s;
+}
+.si4{
+    animation-duration: 3s;
+    animation-delay: 4s;
+
+}
+.si5{
+    animation-duration: 3s;
+    animation-delay: 5s;
+
+}
+.si6{
+    animation-duration: 3s;
+    animation-delay: 6s;
+
+}
+
+
+.seve1 ,.animate, .animatee{
+    animation-duration: 3s;
+
+}
+.seve2{
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+.seve3{
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+
+.seve4{
+    animation-duration: 3s;
+    animation-delay: 6s;
+}
+.seve5{
+    animation-duration: 3s;
+    animation-delay: 8s;
+}
+.seve6{
+    animation-duration: 3s;
+    animation-delay: 10s;
+}
+
+/*==================================================================*/
+
+#scl>li>a{
+    transition: transform 1s;
+}
+
+#scl>li>a:hover{
+    transform: scale(1.3);
+}
+
+
+/*===============register page =========================================*/
+
+
+
+.input-group-addon:last-child{
+    border-right: 0px;
+    border-left: solid 1px lightgray;
+    background-color: #00a9de;
+    color: white;
+
+    border-radius: 0px;
+    border-bottom-left-radius: 20%;
+    border-top-left-radius: 20%;
+}
+
+
+
+
+
+
+
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===============================================================*/
+
+
+/*============================== start style of new baka tables ==========================================*/
+
+
+.content {
+    padding: 30px 0;
+}
+
+/***
+Pricing table
+***/
+.pricing {
+    position: relative;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+    transition: border 1s;
+}
+
+.pricing-active {
+    border: 3px solid #00baff;
+    margin-top: -10px;
+    box-shadow: 7px 7px rgba(23, 37, 215, 0.2);
+}
+
+.pricing:hover {
+
+    border: 3px solid #00a9de;
+}
+
+.pricing:hover h4 {
+    color: #36d7ac;
+}
+
+.pricing-head {
+    text-align: center;
+}
+
+.pricing-head h3,
+.pricing-head h4 {
+    margin: 0;
+    line-height: normal;
+}
+
+.pricing-head h3 span,
+.pricing-head h4 span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.pricing-head h3 {
+    font-weight: 300;
+    color: #fafafa;
+    padding: 12px 0;
+    font-size: 27px;
+    background: #00a9de;
+    border-bottom: solid 1px #41b91c;
+}
+
+.pricing-head h4 {
+    color: #bac39f;
+    padding: 5px 0;
+    font-size: 54px;
+    font-weight: 300;
+    background: #fbfef2;
+    border-bottom: solid 1px #f5f9e7;
+}
+
+.pricing-head-active h4 {
+    color: #36d7ac;
+}
+
+.pricing-head h4 i {
+    top: -8px;
+    font-size: 28px;
+    font-style: normal;
+    position: relative;
+}
+
+.pricing-head h4 span {
+    top: -10px;
+    font-size: 14px;
+    font-style: normal;
+    position: relative;
+}
+
+/*Pricing Content*/
+.pricing-content li {
+    color: #888;
+    font-size: 12px;
+    padding: 7px 15px;
+    border-bottom: solid 1px #f5f9e7;
+}
+
+/*Pricing Footer*/
+.pricing-footer {
+    color: #777;
+    font-size: 11px;
+    line-height: 17px;
+    text-align: center;
+    padding: 0 20px 19px;
+}
+
+/*Priceing Active*/
+.price-active,
+.pricing:hover {
+    z-index: 9;
+}
+
+.price-active h4 {
+    color: #36d7ac;
+}
+
+.no-space-pricing .pricing:hover {
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.no-space-pricing .price-active .pricing-head h4,
+.no-space-pricing .pricing:hover .pricing-head h4 {
+    color: #36d7ac;
+    padding: 15px 0;
+    font-size: 80px;
+    transition: color 0.5s ease-in-out;
+}
+
+.yellow-crusta.btn {
+    color: #FFFFFF;
+    background-color: #f3c200;
+}
+.yellow-crusta.btn:hover,
+.yellow-crusta.btn:focus,
+.yellow-crusta.btn:active,
+.yellow-crusta.btn.active {
+    color: #FFFFFF;
+    background-color: #cfa500;
+}
+
+/*================animation style ===========================================*/
+
+.slid_word{
+    animation-duration: 3s;
+    /*animation-delay: 10s;*/
+}
+
+.slid_word1{
+    animation-duration: 3s;
+    animation-delay: 2s;
+}

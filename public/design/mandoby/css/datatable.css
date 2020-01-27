@@ -1,0 +1,86 @@
+            .data-table{
+/*                background: #e7e7e7*/
+            }
+            .data-table label{
+                font-weight: 100;
+                font-size: 15px;
+                margin-bottom: 10px
+            }
+            .dataTables_wrapper .dataTables_paginate{
+                padding-top: 30px
+            }
+            .dataTables_wrapper .dataTables_info{
+                margin-bottom: 9px;
+                padding-top: 16px;
+            }
+			table{border: 1px solid #ddd}
+			.table-striped>tbody>tr:nth-of-type(odd) {
+			    background-color: #f9f9f9;
+			}
+			table.dataTable tbody th, table.dataTable tbody td{
+				border: 1px solid #d1dfec;
+                    border-left-width:0;
+                border-bottom-width:0
+/*                    #d1dfec !important*/
+			}
+table.dataTable tbody td{
+    padding: 13px
+}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th{
+        background: #f1f5fa;
+}
+			div.dataTables_wrapper div.dataTables_filter input {
+				    margin-left: 0.5em;
+				    display: inline-block;
+				    width: auto;
+				    height: 30px;
+				    padding: 5px 10px;
+				    font-size: 12px;
+				    line-height: 1.5;
+				    border-radius: 3px;
+                    border: 1px solid #d1dfec
+			}
+            .table>thead:first-child>tr:first-child>th{
+                border-bottom: 0
+            }
+            table.dataTable.no-footer{
+                border-right: 0;
+                border-bottom: 1px solid #d1dfec
+            }
+            .table-bordered>thead>tr>th{
+                border: 1px solid #d1dfec
+            }
+            
+ div.dataTables_wrapper div.dataTables_length select {
+    width: 75px;
+    display: inline-block;
+    border: 1px solid #d1dfec;
+    height: 30px
+}
+            .paginate_button.current{
+                background: #337ab7 !important;
+                color: #FFF !important;
+            }
+            .dataTables_wrapper .dataTables_paginate .paginate_button{
+                color: #337ab7 !important;
+                border: 1px solid #EEE
+            }
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+                background: #ebedef !important;
+                border: #EEE;
+                color: #000 !important
+            }
+            
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: #FFF !important;
+    background: #337ab7 !important;
+            }
+            .table>thead:first-child>tr:first-child>th{
+                border-left: 0
+            }
+            
+            .example{
+                margin-top: 30px !important
+            }
+            
+            .dataTables_wrapper{margin-top: 10px; padding-bottom: 25px;}
