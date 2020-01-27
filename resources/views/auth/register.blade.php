@@ -44,7 +44,7 @@
                                         <input name="user_type" type="hidden" value="owner">
                                         <div class="col-sm-6">
                                             <label for="last_name">اسم العائلة</label>
-                                            <input name="last_name" type="text" required>
+                                            <input name="last_name" value="{{old('last_name')}}" type="text" required>
 
                                             @if ($errors->has('last_name'))
                                             <span class="help-block">
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="first_name">الاسم الأول</label>
-                                            <input name="name" type="text" required>
+                                            <input name="name" type="text" value="{{old('name')}}" required>
                                             @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -65,7 +65,7 @@
                                             <label> رقم الجوال</label>
                                             <div class="field-container">
 
-                                                <input class="input-field" name="phone" type="text" required>
+                                                <input class="input-field" name="phone" value="{{old('phone')}}" type="text" required>
                                                 @if ($errors->has('phone'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="email">البريد الالكترونى</label>
-                                            <input class=" " id="" placeholder="" name="email" type="email" autocomplete="off" required>
+                                            <input class=" " id="" placeholder="" name="email" value="{{old('email')}}" type="email" autocomplete="off" required>
                                             <!-- For array -->
                                             @if ($errors->has('email'))
                                             <span class="help-block">
@@ -130,7 +130,7 @@
                                         <input name="user_type" type="hidden" value="personal">
                                         <div class="col-sm-6">
                                             <label for="last_name">اسم العائلة</label>
-                                            <input name="last_name" type="text" required>
+                                            <input name="last_name" type="text" value="{{old('last_name')}}" required>
 
                                             @if ($errors->has('last_name'))
                                             <span class="help-block">
@@ -140,7 +140,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="first_name">الاسم الأول</label>
-                                            <input name="name" type="text" required>
+                                            <input name="name" type="text" value="{{old('first_name')}}" required>
                                             @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -151,7 +151,7 @@
                                             <label> رقم الجوال</label>
                                             <div class="field-container">
 
-                                                <input class="input-field" name="phone" type="text" required>
+                                                <input class="input-field" name="phone" type="text" value="{{old('phone')}}" required>
                                                 @if ($errors->has('phone'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -162,7 +162,7 @@
 
                                         <div class="col-sm-6">
                                             <label for="email">البريد الالكترونى</label>
-                                            <input class=" " id="" placeholder="" name="email" type="email" autocomplete="off" required>
+                                            <input class=" " id="" placeholder="" name="email" type="email" value="{{old('email')}}" autocomplete="off" required>
                                             <!-- For array -->
                                             @if ($errors->has('email'))
                                             <span class="help-block">
@@ -173,7 +173,7 @@
                                         <div class="col-sm-12" style="margin-bottom:20px">
                                             <label for="notes">نبذة مختصره</label>
 
-                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required></textarea>
+                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required>{{old('notes')}}</textarea>
 
                                             @if ($errors->has('notes'))
                                             <span class="help-block">
@@ -232,7 +232,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label>اسم الشركة <small>(بالإنجليزي)</small></label>
-                                            <input name="en_name" type="text" required>
+                                            <input name="en_name" type="text" value="{{old('en_name')}}" required>
                                             @if ($errors->has('en_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('en_name') }}</strong>
@@ -241,7 +241,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label>اسم الشركة <small>(بالعربي)</small></label>
-                                            <input name="name" type="text" required>
+                                            <input name="name" type="text" value="{{old('name')}}" required>
                                             @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -251,7 +251,7 @@
                                         <div class="col-sm-6">
                                             <label for="representative">ممثل الجهة</label>
 
-                                            <input class=" " id="" placeholder="" name="representative" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('representative')}}" name="representative" type="text" required>
 
                                             @if ($errors->has('representative'))
                                             <span class="help-block">
@@ -262,7 +262,7 @@
                                         <div class="col-sm-6">
                                             <label for="commercial_reg">السجل التجاري</label>
 
-                                            <input class=" " id="" placeholder="" name="commercial_reg" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('commercial_reg')}}" name="commercial_reg" type="text" required>
 
                                             @if ($errors->has('commercial_reg'))
                                             <span class="help-block">
@@ -273,7 +273,7 @@
                                         <div class="col-sm-12" style="margin-bottom:20px">
                                             <label for="notes">نبذة عن المنشأه</label>
 
-                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required></textarea>
+                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required>{{old('notes')}}</textarea>
 
                                             @if ($errors->has('notes'))
                                             <span class="help-block">
@@ -290,7 +290,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" name="contact_lname" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('contact_lname')}}" name="contact_lname" type="text" required>
 
                                             @if ($errors->has('contact_lname'))
                                             <span class="help-block">
@@ -301,7 +301,7 @@
                                         <div class="col-sm-6">
                                             <label for="contact_fname">الاسم الأول</label>
 
-                                            <input class=" " id="" placeholder="" name="contact_fname" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('contact_fname')}}" name="contact_fname" type="text" required>
 
                                             @if ($errors->has('contact_fname'))
                                             <span class="help-block">
@@ -312,7 +312,7 @@
                                         <div class="col-sm-6">
                                             <label> مواقع التواصل الاجتماعي</label>
 
-                                            <input type="text" class="" name="contact_social" style="text-align:left" required />
+                                            <input type="text" class="" value="{{old('contact_social')}}" name="contact_social" style="text-align:left" required />
                                             @if ($errors->has('contact_social'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('contact_social') }}</strong>
@@ -322,7 +322,7 @@
                                         <div class="col-sm-6">
                                             <label for="email">البريد الإلكتروني</label>
 
-                                            <input name="email" type="email" autocomplete="off" required>
+                                            <input name="email" type="email" value="{{old('email')}}" autocomplete="off" required>
                                             @if ($errors->has('email'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('email') }}</strong>
@@ -339,7 +339,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" name="website" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('website')}}" name="website" type="text" required>
                                             @if ($errors->has('website'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('website') }}</strong>
@@ -349,7 +349,7 @@
                                         <div class="col-sm-6">
                                             <label> رقم الجوال</label>
 
-                                            <input class="input-field" name="phone" type="number" required>
+                                            <input class="input-field" name="phone" value="{{old('phone')}}" type="number" required>
                                             @if ($errors->has('phone'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('phone') }}</strong>
@@ -417,7 +417,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label>اسم المؤسسه <small>(بالإنجليزي)</small></label>
-                                            <input name="en_name" type="text" required>
+                                            <input name="en_name" value="{{old('en_name')}}" type="text" required>
                                             @if ($errors->has('en_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('en_name') }}</strong>
@@ -426,7 +426,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label>اسم المؤسسه <small>(بالعربي)</small></label>
-                                            <input name="name" type="text" required>
+                                            <input name="name" value="{{old('name')}}" type="text" required>
                                             @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -436,7 +436,7 @@
                                         <div class="col-sm-6">
                                             <label for="representative">ممثل الجهة</label>
 
-                                            <input class=" " id="" placeholder="" name="representative" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('representative')}}" name="representative" type="text" required>
 
                                             @if ($errors->has('representative'))
                                             <span class="help-block">
@@ -447,7 +447,7 @@
                                         <div class="col-sm-6">
                                             <label for="commercial_reg">السجل التجاري</label>
 
-                                            <input class=" " id="" placeholder="" name="commercial_reg" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('commercial_reg')}}" name="commercial_reg" type="text" required>
 
                                             @if ($errors->has('commercial_reg'))
                                             <span class="help-block">
@@ -458,7 +458,7 @@
                                         <div class="col-sm-12" style="margin-bottom:20px">
                                             <label for="notes">نبذة عن المنشأه</label>
 
-                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required></textarea>
+                                            <textarea class=" " id="" placeholder="" style="width:100%;font-size:24px" name="notes" cols="50" rows="7" required>{{old('notes')}}</textarea>
 
                                             @if ($errors->has('notes'))
                                             <span class="help-block">
@@ -475,7 +475,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" name="contact_lname" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('contact_lname')}}" name="contact_lname" type="text" required>
 
                                             @if ($errors->has('contact_lname'))
                                             <span class="help-block">
@@ -486,7 +486,7 @@
                                         <div class="col-sm-6">
                                             <label for="contact_fname">الاسم الأول</label>
 
-                                            <input class=" " id="" placeholder="" name="contact_fname" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('contact_fname')}}" name="contact_fname" type="text" required>
 
                                             @if ($errors->has('contact_fname'))
                                             <span class="help-block">
@@ -497,7 +497,7 @@
                                         <div class="col-sm-6">
                                             <label> مواقع التواصل الاجتماعي</label>
 
-                                            <input type="text" class="" name="contact_social" style="text-align:left" required />
+                                            <input type="text" class="" name="contact_social" value="{{old('contact_social')}}" style="text-align:left" required />
                                             @if ($errors->has('contact_social'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('contact_social') }}</strong>
@@ -507,7 +507,7 @@
                                         <div class="col-sm-6">
                                             <label for="email">البريد الإلكتروني</label>
 
-                                            <input name="email" type="email" autocomplete="off" required>
+                                            <input name="email" type="email" value="{{old('email')}}" autocomplete="off" required>
                                             @if ($errors->has('email'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('email') }}</strong>
@@ -524,7 +524,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" name="website" type="text" required>
+                                            <input class=" " id="" placeholder="" value="{{old('website')}}" name="website" type="text" required>
                                             @if ($errors->has('website'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('website') }}</strong>
@@ -534,7 +534,7 @@
                                         <div class="col-sm-6">
                                             <label> رقم الجوال</label>
 
-                                            <input class="input-field" name="phone" type="number" required>
+                                            <input class="input-field" name="phone" value="{{old('phone')}}" type="number" required>
                                             @if ($errors->has('phone'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('phone') }}</strong>
