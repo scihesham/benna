@@ -572,7 +572,7 @@
 
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu ">
-                        <li><a href="{{route('register')}}">
+                        <li><a href="{{route('register')}}?action=owner">
                                 تسجيل حساب جديد
                             </a></li>
 
