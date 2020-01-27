@@ -1,0 +1,32 @@
+[09-Oct-2019 01:04:16 UTC] PHP Warning:  Uncaught ErrorException: require(/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php): failed to open stream: No such file or directory in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php:66
+Stack trace:
+#0 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): Composer\Util\ErrorHandler::handle(2, 'require(/home/t...', '/home/tareklan/...', 66, Array)
+#1 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): require()
+#2 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(56): composerRequiredf7bc640fe5b98b016efc1e75f1856f1('925c6270ea37b16...', '/home/tareklan/...')
+#3 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/autoload.php(7): ComposerAutoloaderInitdf7bc640fe5b98b016efc1e75f1856f1::getLoader()
+#4 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/laravel/framework/src/Illuminate/Foundati in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:04:16 UTC] PHP Fatal error:  composerRequiredf7bc640fe5b98b016efc1e75f1856f1(): Failed opening required '/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:04:57 UTC] PHP Warning:  Uncaught ErrorException: require(/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php): failed to open stream: No such file or directory in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php:66
+Stack trace:
+#0 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): Composer\Util\ErrorHandler::handle(2, 'require(/home/t...', '/home/tareklan/...', 66, Array)
+#1 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): require()
+#2 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(56): composerRequiredf7bc640fe5b98b016efc1e75f1856f1('925c6270ea37b16...', '/home/tareklan/...')
+#3 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/autoload.php(7): ComposerAutoloaderInitdf7bc640fe5b98b016efc1e75f1856f1::getLoader()
+#4 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/laravel/framework/src/Illuminate/Foundati in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:04:57 UTC] PHP Fatal error:  composerRequiredf7bc640fe5b98b016efc1e75f1856f1(): Failed opening required '/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:06:25 UTC] PHP Warning:  Uncaught ErrorException: require(/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php): failed to open stream: No such file or directory in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php:66
+Stack trace:
+#0 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): Composer\Util\ErrorHandler::handle(2, 'require(/home/t...', '/home/tareklan/...', 66, Array)
+#1 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): require()
+#2 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(56): composerRequiredf7bc640fe5b98b016efc1e75f1856f1('925c6270ea37b16...', '/home/tareklan/...')
+#3 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/autoload.php(7): ComposerAutoloaderInitdf7bc640fe5b98b016efc1e75f1856f1::getLoader()
+#4 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/laravel/framework/src/Illuminate/Foundati in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:06:25 UTC] PHP Fatal error:  composerRequiredf7bc640fe5b98b016efc1e75f1856f1(): Failed opening required '/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:07:22 UTC] PHP Warning:  Uncaught ErrorException: require(/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php): failed to open stream: No such file or directory in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php:66
+Stack trace:
+#0 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): Composer\Util\ErrorHandler::handle(2, 'require(/home/t...', '/home/tareklan/...', 66, Array)
+#1 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(66): require()
+#2 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php(56): composerRequiredf7bc640fe5b98b016efc1e75f1856f1('925c6270ea37b16...', '/home/tareklan/...')
+#3 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/autoload.php(7): ComposerAutoloaderInitdf7bc640fe5b98b016efc1e75f1856f1::getLoader()
+#4 /home/tareklan/public_html/projects/hesham/new_paypal/vendor/laravel/framework/src/Illuminate/Foundati in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
+[09-Oct-2019 01:07:22 UTC] PHP Fatal error:  composerRequiredf7bc640fe5b98b016efc1e75f1856f1(): Failed opening required '/home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/../../app/help/helper.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/tareklan/public_html/projects/hesham/new_paypal/vendor/composer/autoload_real.php on line 66
