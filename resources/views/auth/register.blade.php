@@ -19,7 +19,7 @@
     
 @media only screen and (max-width: 767px) {
     .cont-nav.panel-heading{
-        height: 290px;
+         height: 281px;;
     }
 }
     
