@@ -545,7 +545,7 @@
                         <hr style="margin:0">
                         @if(Auth::user()->permission == 3)
                         <li>
-                            <a href="{{url('invoice')}}" style="font-size:16px; font-weight:bold; color:green; padding:15px 20px">فواتيري</a>
+                            <a href="{{url('invoices')}}" style="font-size:16px; font-weight:bold; color:green; padding:15px 20px">فواتيري</a>
                         </li>
                         <hr style="margin:0">
                         @endif

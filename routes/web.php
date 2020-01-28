@@ -85,6 +85,7 @@ Route::group(['middleware' => ['web', 'maintainance', 'auth']], function(){
     
     
  /* InvoiceController */   
+ Route::get('invoices', 'Front\InvoiceController@index');
  Route::resource('invoice', 'Front\InvoiceController');
  Route::get('receipt/{invoice_id}', 'Front\InvoiceController@showReceipt');
  Route::get('receipt/edit/{invoice_id}', 'Front\InvoiceController@editReceipt');
