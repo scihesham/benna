@@ -59,6 +59,9 @@
        font-size:25px;
        margin-bottom: 27px;
     }
+    #create hr{
+        display: none
+    }
 
 </style>
 @endsection
@@ -358,7 +361,7 @@
 
                                     تفاصيل العرض
                                 </label>
-                                <textarea name="desc" id="desc" class="form-control" rows="9" cols="25" placeholder="تفاصيل العرض " required style="font-size:18px"></textarea>
+                                <textarea name="desc" id="desc" class="form-control" rows="9" cols="25" placeholder="تفاصيل العرض " required style="font-size:20px"></textarea>
                                 @if ($errors->has('desc'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('desc') }}</strong>
@@ -386,20 +389,19 @@
                             
                             <div class="form-group" id="create" style="margin-top: 30px;">
 
-                                <div class="col-xs-2 col-md-1">
-                                </div>
-                                <div class="col-xs-2 col-md-3 offer-val">
+                             
+                                <div class="col-md-12 offer-val" >
                                     <label for="values[]">
                                         السعر
                                     </label>
-                                    <input name="values[]" id="values[]" type="number" class="form-control" placeholder="السعر" required style="padding:0">
+                                    <input name="values[]" id="values[]" max="9999999999" type="number" class="form-control" placeholder="السعر" required >
                                 </div>
                                 @if ($errors->has('values.*'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('values.*') }}</strong>
                                 </span>
                                 @endif
-                                <div class="col-xs-8"  style="padding:0">
+                                <div class="col-md-12" >
                                     <label for="milestones[]">
                                         تفاصيل المرحله
                                     </label>
@@ -443,7 +445,7 @@
         var i = 1;
         $('#add').click(function() {
             i++;
-            $('#create').append('<hr><div id="row'+ i +'"><div class="form-group append" style="margin-top:70px">' +'<div class="col-xs-2 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class="col-xs-2 col-md-3 offer-val"><label for="values[]"> السعر</label><input name="values[]" id="values[]" type="number" class="form-control" placeholder="السعر" style="padding:0" required></div>'+ '<div class="col-xs-8" style="padding:0"><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " required></div></div>');
+            $('#create').append('<hr><div id="row'+ i +'"><div class="form-group append" style="margin-top:10px">' +'<div class="col-md-offset-11 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class=" col-md-12 offer-val" style="margin-top: 22px;"><label for="values[]"> السعر</label><input name="values[]" id="values[]" type="number" class="form-control" max="9999999999" placeholder="السعر"  required></div>'+ '<div class="col-md-12" style=""><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " required></div></div>');
         
         });
 

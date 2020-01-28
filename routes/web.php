@@ -58,6 +58,7 @@ Route::group(['middleware' => ['web', 'maintainance', 'auth']], function(){
  Route::get('notification/projects', 'Front\ProjectController@projectNotification');
  Route::post('last-seen-project', 'Front\ProjectController@lastSeenProject');
  Route::post('last-seen-offer', 'Front\ProjectController@lastSeenOffer');
+ Route::get('project/statistics/{project_id}', 'Front\ProjectController@projectStatistics');
     
  /* OfferStatusController */
  Route::post('offer/project/{project_id}', 'Front\OfferStatusController@store');

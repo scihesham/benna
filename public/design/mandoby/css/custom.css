@@ -14,6 +14,9 @@ body, h1, h2, h3, h4, h5, h6 {
     direction: rtl;
      
 }
+
+textarea{resize: none}
+
 .btn{font-size: 17px !important;}
 .btn-success, .btn-primary{background: #0067ab !important;}
 

@@ -343,7 +343,7 @@
                                 @endif
                             </div>
                             <br>
-                            <div class="form-group">
+                            <div class="form-group" style="font-size:18px">
                                 @if(isset($offer->offer->attachment_id))
                                     @foreach(json_decode($offer->offer->attachment_id) as $val)
                                         @if(isset(\App\Attachment::find($val)->path))
@@ -412,12 +412,12 @@
         var i = 1;
         @foreach($offer->milestones as $milestone)
         i++;
-        $('#create').append('<div id="row'+ i +'"><div class="form-group append" style="margin-top:55px">' +'<div class="col-xs-2 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class="col-xs-2 col-md-3 offer-val"><label for="values[]"> السعر</label><input name="values[]" id="values[]" style="padding:0" type="number" class="form-control" placeholder="السعر" value="{{$milestone->value}}" style="padding:0" required></div>'+ '<div class="col-xs-8" style="padding:0"><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " value="{{$milestone->desc}}" required></div></div><br>');
+        $('#create').append('<div id="row'+ i +'"><div class="form-group append" style="margin-top:0px">' +'<div class="col-md-offset-11 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class="col-md-12 offer-val" style="margin-top: 22px;"><label for="values[]"> السعر</label><input name="values[]" id="values[]" style="" type="number" class="form-control" placeholder="السعر" value="{{$milestone->value}}" style="padding:0" required></div>'+ '<div class="col-md-12" style=""><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " value="{{$milestone->desc}}" required></div></div><br>');
         @endforeach
         
         $('#add').click(function() {
             i++;
-            $('#create').append('<div id="row'+ i +'"><div class="form-group append" style="margin-top:55px">' +'<div class="col-xs-2 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class="col-xs-2 col-md-3 offer-val"><label for="values[]"> السعر</label><input name="values[]" id="values[]" style="padding:0" type="number" class="form-control" placeholder="السعر" required></div>'+ '<div class="col-xs-8" style="padding:0"><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " required></div></div><br>');
+            $('#create').append('<div id="row'+ i +'"><div class="form-group append" style="margin-top:0px">' +'<div class="col-md-offset-11 col-md-1"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" style="position:relative; top:27px">X</button></div>'+ '<div class="col-md-12 offer-val" style="margin-top: 22px;"><label for="values[]"> السعر</label><input name="values[]" id="values[]" style="" type="number" class="form-control" placeholder="السعر" required></div>'+ '<div class="col-md-12" style=""><label for="milestones[]">تفاصيل المرحله  </label><input name="milestones[]" id="milestones[]" class="form-control" placeholder="تفاصيل المرحله " required></div></div><br>');
         
         });
 

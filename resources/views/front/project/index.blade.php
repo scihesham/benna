@@ -77,7 +77,11 @@
                                             @foreach ($projects as $key => $project)
                                             <tr class="">
                                                 <td>{{$key+1}}</td>
-                                                <td class="text-center center-vc">{{$project->title}}</td>
+                                                <td class="text-center center-vc">
+                                                    <a href="{{url('project/statistics').'/'.$project->id}}">
+                                                    {{$project->title}}
+                                                    </a>
+                                                </td>
                                                 
                                                 <td class="text-center center-vc">{{ksaCities()[$project->city]}}</td>
                                                 

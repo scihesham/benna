@@ -207,6 +207,15 @@ class ProjectController extends Controller
         return view('front.project.search', compact('projects', 'title', 'city_num'));
     }
     
+    public function projectStatistics($id){
+        $project = Project::find($id);
+        if(is_object($project)){
+            return view('front.project.statistics', compact('project'));
+        }
+        else{
+           return redirect()->back()->with('error', 'Something Went Wrong'); 
+        }
+    }
     
    public function projectNotification(){
        $last_pro_id = 0;

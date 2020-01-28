@@ -14,15 +14,30 @@
         width: 80%;
         margin: 0 auto
     }
-    .well-sm{border-radius: 10px}
+
+    .well-sm {
+        border-radius: 10px
+    }
+
     .color h2 {
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 22px;
     }
 
-    select.form-control{font-size:20px !important; height: 37px}
-    textarea.form-control{font-size:22px !important}
+    select.form-control {
+        font-size: 20px !important;
+        height: 37px
+    }
+
+    textarea {
+        resize: none
+    }
+
+    textarea.form-control {
+        font-size: 22px !important
+    }
+
 </style>
 @endsection
 
@@ -49,12 +64,12 @@
                                 </label>
                                 <input type="text" class="form-control" name="title" id="title" placeholder="العنوان" required="required" />
                                 @if ($errors->has('title'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="city">
 
@@ -65,31 +80,31 @@
                                     @foreach(ksaCities() as $key => $city)
                                     <option value="{{$key}}">{{$city}}</option>
                                     @endforeach
-                                    
+
                                 </select>
                                 @if ($errors->has('city'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('city') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="city">
 
-                                     تصنيف المشروع *
+                                    تصنيف المشروع *
                                 </label>
                                 <select type="text" class="form-control" name="category" id="category" required="required">
                                     <option value="">...</option>
                                     @foreach(projectCategories() as $key => $cat)
                                     <option value="{{$key}}">{{$cat}}</option>
                                     @endforeach
-                                    
+
                                 </select>
                                 @if ($errors->has('category'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('category') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('category') }}</strong>
+                                </span>
                                 @endif
                             </div>
 
@@ -99,32 +114,32 @@
                                     ميزانية المشروع المتوقعة (ر.س.)
 
                                 </label>
-                                <input type="number" class="form-control" name="expectbudget" id="expectbudget" placeholder="غير محدده 
+                                <input type="number" class="form-control" max="9999999999" name="expectbudget" id="expectbudget" placeholder="غير محدده 
 " />
                                 @if ($errors->has('expectbudget'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('expectbudget') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('expectbudget') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="expecttime">
 
-                                    مدة التنفيذ المتوقعة 
+                                    مدة التنفيذ المتوقعة
 
                                 </label>
                                 <input type="text" class="form-control" name="expecttime" id="expecttime" placeholder="غير محدده 
 
 " />
                                 @if ($errors->has('expecttime'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('expecttime') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('expecttime') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                            
-                            
+
+
                             <div class="form-group">
                                 <label for="desc">
 
@@ -132,9 +147,9 @@
                                 </label>
                                 <textarea name="desc" id="desc" class="form-control" rows="9" cols="25" placeholder="وصف المشروع " required></textarea>
                                 @if ($errors->has('desc'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('desc') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('desc') }}</strong>
+                                </span>
                                 @endif
                             </div>
 
@@ -143,13 +158,13 @@
 
                                     الملحقات
                                 </label>
-                                <input type="file" class="form-control" name="attachments[]" id="attachments" placeholder="الملحقات"  multiple />
+                                <input type="file" class="form-control" name="attachments[]" id="attachments" placeholder="الملحقات" multiple />
                                 @if ($errors->has('attachments.*'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('attachments.*') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('attachments.*') }}</strong>
+                                </span>
                                 @endif
-                            </div>     
+                            </div>
                             <div class="">
                                 <button type="submit" style="margin:10px 0" class="btn btn-primary pull-right" id="btnContactUs" onclick='return confirmAr()'>
 

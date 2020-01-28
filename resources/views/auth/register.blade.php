@@ -9,6 +9,12 @@
     margin-top: -25px !important;
     font-size: 20px;
     }
+    textarea{
+        resize: none
+    }
+    select.form-cotrol{
+        font-size: 21px !important;
+    }
 </style>
 @endsection
 
@@ -89,7 +95,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="password">كلمه المرور</label>
-                                            <input name="password" type="password" autocomplete="new-password" required>
+                                            <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
                                             @if ($errors->has('password'))
                                             <span class="help-block">
@@ -187,7 +193,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="password">كلمه المرور</label>
-                                            <input name="password" type="password" autocomplete="new-password" required>
+                                            <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
                                             @if ($errors->has('password'))
                                             <span class="help-block">
@@ -372,7 +378,7 @@
 
                                         <div class="col-sm-6">
                                             <label for="password">كلمه المرور</label>
-                                            <input name="password" type="password" autocomplete="new-password" required>
+                                            <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
                                             @if ($errors->has('password'))
                                             <span class="help-block">
@@ -557,7 +563,7 @@
 
                                         <div class="col-sm-6">
                                             <label for="password">كلمه المرور</label>
-                                            <input name="password" type="password" autocomplete="new-password" required>
+                                            <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
                                             @if ($errors->has('password'))
                                             <span class="help-block">
