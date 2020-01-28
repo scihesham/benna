@@ -19,7 +19,14 @@
     
 @media only screen and (max-width: 767px) {
     .cont-nav.panel-heading{
-         height: 281px;;
+         height: 281px;
+    }
+}
+    
+    
+@media only screen and (min-width: 767px) {
+    .position-right{
+         float: right
     }
 }
     
@@ -379,12 +386,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label for="password_confirmation">تاكيد كلمه المرور</label>
-                                            <input class=" " id="" placeholder="" name="password_confirmation" type="password" required>
-                                        </div>
-
-                                        <div class="col-sm-6">
+                                        
+                                       <div class="col-sm-6 position-right">
                                             <label for="password">كلمه المرور</label>
                                             <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
@@ -394,6 +397,13 @@
                                             </span>
                                             @endif
                                         </div>
+                                        
+                                        <div class="col-sm-6" >
+                                            <label for="password_confirmation">تاكيد كلمه المرور</label>
+                                            <input class=" " id="" placeholder="" name="password_confirmation" type="password" required>
+                                        </div>
+
+ 
                                         <div class="col-sm-12">
                                             <p style="font-family:ara">
                                                 عند التسجيل بالموقع، فإنك توافق على
@@ -564,12 +574,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label for="password_confirmation">تاكيد كلمه المرور</label>
-                                            <input class=" " id="" placeholder="" name="password_confirmation" type="password" required>
-                                        </div>
-
-                                        <div class="col-sm-6">
+                                        
+                                        <div class="col-sm-6 position-right">
                                             <label for="password">كلمه المرور</label>
                                             <input name="password" type="password" minlength="6" autocomplete="new-password" required>
                                             <!-- For array -->
@@ -579,6 +585,12 @@
                                             </span>
                                             @endif
                                         </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="password_confirmation">تاكيد كلمه المرور</label>
+                                            <input class="" id="" placeholder="" name="password_confirmation" type="password" required>
+                                        </div>
+
                                         <div class="col-sm-12">
                                             <p style="font-family:ara">
                                                 عند التسجيل بالموقع، فإنك توافق على
