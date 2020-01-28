@@ -49,7 +49,7 @@
                         @include('auth.contnav-reg')
                     </div>
                     @if($action == 'owner')
-                    <div class="panel-body">
+                    <div class="panel-body" style="padding-top:0">
                         <div class="">
                             <div class="non">
                                 <div class="row">
