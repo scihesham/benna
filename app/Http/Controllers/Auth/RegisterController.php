@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\User;
 use App\Code;
 use App\CompanyDetail;
@@ -160,7 +162,7 @@ class RegisterController extends Controller
         }
         
         if(is_object($user)){    
-            /* send mail with activation code*/
+            /* send mail with activation code */
             $charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             $crypt = md5(substr(str_shuffle($charset), 0, 5));
             $rand = substr(str_shuffle($charset), 0, 15);
@@ -176,4 +178,21 @@ class RegisterController extends Controller
         
         return $user;
     }
+    
+    
+    
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+          // edits
+//        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath())->with('success', 'تم تسجيل الحساب بنجاح برجاء تفعيل الايميل');
+    }
+    
+    
+    
 }
