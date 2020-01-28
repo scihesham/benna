@@ -147,6 +147,7 @@
 
 
 <!--======start div of spicial background ==========-->
+@if(!Auth::user())
 <div class="container" style="margin-top:20px; ">
     <div style="width:100%; text-align:center; margin-top:40px">
         <b style="font-size:28px">احصل على الخدمه المطلوبه</b>
@@ -210,7 +211,7 @@
         </div>
 
 </div>
-
+@endif
 
 
 <!--======end div of special backgroung =============-->
