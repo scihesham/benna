@@ -276,7 +276,7 @@
                         <!-- overdate invoices -->
                         @foreach(overdateInvoices() as $invoice)
                         <li id="overdate-invoice{{$invoice->id}}" class="msg overdate-invoice" style="position:relative">
-                            <a href="{{url('invoice?invoice_id='.$invoice->id)}}" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">
+                            <a href="{{url('invoices?invoice_id='.$invoice->id)}}" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">
                                 <center style="padding-top:10px">
                                     <span style="color:red">فاتورة </span><br>
                                     ({{$invoice->offer->project->title}})
@@ -380,7 +380,7 @@
                                 <!-- not paid invoices -->
                                 @if($notification->status == '0')
                                     <li class="invoice-content">
-                                        <a href="{{url('invoice?invoice_id='.$notification->id)}}" style="padding:0">
+                                        <a href="{{url('invoices?invoice_id='.$notification->id)}}" style="padding:0">
                                         <h2 class="text-center title">فاتورة </h2>
                                         <h3 class="text-center" style="display:block; margin-top:-6px">
                                             ({{$notification->offer->project->title}})
@@ -401,7 +401,7 @@
                                 <!-- for paid invoices -->
                                 @else
                                     <li class="invoice-content">
-                                        <a href="{{url('invoice?invoice_id='.$notification->id)}}" style="padding:0">
+                                        <a href="{{url('invoices?invoice_id='.$notification->id)}}" style="padding:0">
                                         <h2 class="text-center title">فاتورة </h2>
                                         <h3 class="text-center" style="display:block; margin-top:-6px">
                                             ({{$notification->offer->project->title}})
