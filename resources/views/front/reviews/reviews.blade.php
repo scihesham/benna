@@ -212,7 +212,7 @@
                     </div>
                     <div class="col-sm-6 margin-sm" style="font-size:28px;">
                         <b>{{$user->$company_type->contact_social}}</b>
-                        <div class="" style="font-size:16px; color:#999999">البريد الالكتروني</div>
+                        <div class="" style="font-size:16px; color:#999999">موقع التواصل الاجتماعي</div>
                     </div>
 
 
