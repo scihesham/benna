@@ -143,39 +143,65 @@ class ProjectController extends Controller
     public function search(Request $request){
         
         if(!$request->session()->has('project_filters')){
-            $array = ['city' => '', 'status' => ''];
+            $array = ['city' => '', 'category' => '', 'status' => ''];
             /* create new session */
             $request->session()->put('project_filters', $array);
         }
         $array = $request->session()->get('project_filters');
         $array['status'] = 0;
         $request->session()->put('project_filters', $array);
-        if(empty($request->session()->get('project_filters')['city']) && $request->session()->get('project_filters')['city'] != 0){
+        
+        /* if no city filteration session */
+        if(!isset($request->session()->get('project_filters')['category']) ||(empty($request->session()->get('project_filters')['city']) && $request->session()->get('project_filters')['city'] != 0)){
             $city_num = '';
         }
         else{
             $city_num = $request->session()->get('project_filters')['city'];
         }
         
-//        $filters[] = ['status', '0'];
+        /* if no category filteration session */
+        if(!isset($request->session()->get('project_filters')['category']) || (empty($request->session()->get('project_filters')['category']) && $request->session()->get('project_filters')['category'] != 0)){
+            $category_num = '';
+        }
+        else{
+            $category_num = $request->session()->get('project_filters')['category'];
+        }
+        
         $filter_status = false;
         
         if(isset($request->keyword)){
           $filter_status = true;
         }
         
+        /* if set city in search */
         if(isset($request->city) && $request->city != 'all'){
            $filter_status = true;
            $city_num = (int)$request->city;
            $array['city'] = $city_num;
            $request->session()->put('project_filters', $array);
-//           $filters[] = ['city', $city_num];
         }
         if($request->city == 'all'){
             $city_num = '';
             $array['city'] = $city_num;
             $request->session()->put('project_filters', $array);
         }
+        
+        
+        /* if set category in search */
+        if(isset($request->category) && $request->category != 'all'){
+           $filter_status = true;
+           $category_num = (int)$request->category;
+           $array['category'] = $category_num;
+           $request->session()->put('project_filters', $array);
+        }
+        if($request->category == 'all'){
+            $category_num = '';
+            $array['category'] = $category_num;
+            $request->session()->put('project_filters', $array);
+        }
+        
+        
+        
 //        dd($request->session()->get('project_filters'));
         foreach($request->session()->get('project_filters') as $key => $val){
             if(!empty($val)){
@@ -185,6 +211,7 @@ class ProjectController extends Controller
                $filters[] = [$key, $val];  
             }
         }
+
         if($filter_status){
             if(isset($request->keyword) && !empty($request->keyword)){
              $projects = Project::where($filters)
@@ -204,7 +231,7 @@ class ProjectController extends Controller
         }
         
         $title = 'المشاريع الجديده';
-        return view('front.project.search', compact('projects', 'title', 'city_num'));
+        return view('front.project.search', compact('projects', 'title', 'city_num', 'category_num'));
     }
     
     public function projectStatistics($id){

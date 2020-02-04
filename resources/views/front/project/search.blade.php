@@ -19,6 +19,24 @@
         }
     }
 
+    @media (max-width: 991px) and (min-width: 768px) {
+        .cat {
+            margin-left: 80px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cat {
+            margin-left: 150px;
+            margin-top: -10px
+        }
+
+        #category-filter {
+            width: 130px !important
+        }
+    }
+
+
     th {
         display: none
     }
@@ -87,11 +105,20 @@
     }
 
     /*    *{border: none !important}*/
-    #city-filter {
+    #city-filter,
+    #category-filter {
         width: 130px;
         position: absolute;
         left: 0;
         top: -24px;
+    }
+
+    #category-filter {
+        width: 230px;
+    }
+
+    table.dataTable tbody td {
+        border: none !important
     }
 
 </style>
@@ -110,18 +137,36 @@
                             <div class="panel panel-primary" style="margin-top:0px">
 
                                 <div class="panel-heading" style="background:none !important; color: #000 !important">
-                                    <span class="col-sm-8 filter" style="">
-                                        <select class="form-control" id="city-filter" style="font-size:17px">
-                                            <option value="all">جميع المدن</option>
-                                            @foreach(ksaCities() as $key => $val)
-                                            @if(!empty($city_num) || $city_num=='0')
-                                            <option value="{{$key}}" {{$city_num == $key ? 'selected' : ''}}  >{{$val}}</option>
-                                            @else
-                                            <option value="{{$key}}">{{$val}}</option>
-                                            @endif
-                                            @endforeach
-                                        </select>
-                                    </span>
+                                    <div class="col-sm-8">
+                                        <span class="col-sm-2 col-xs-12 filter" style="">
+                                            <select class="form-control" id="city-filter" style="font-size:17px">
+                                                <option value="all">جميع المدن</option>
+                                                @foreach(ksaCities() as $key => $val)
+                                                    @if(!empty($city_num) || $city_num=='0')
+                                                    <option value="{{$key}}" {{$city_num==$key ? 'selected' : '' }}>{{$val}}</option>
+                                                    @else
+                                                    <option value="{{$key}}">{{$val}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </span>
+
+                                        <span class="col-sm-4 col-xs-offset-1 col-xs-12 cat" style="">
+                                            <select class="form-control" id="category-filter" style="font-size:17px">
+                                                <option value="all">جميع الاقسام</option>
+                                                @foreach(projectCategories() as $key => $val)
+                                                    @if(!empty($category_num) || $category_num=='0')
+                                                    <option value="{{$key}}" {{$category_num==$key ? 'selected' : '' }}>{{$val}}</option>
+                                                    @else
+                                                    <option value="{{$key}}">{{$val}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </span>
+                                    </div>
+
+
+
                                     <span class="col-sm-4" style="margin-top:-10px">{{$title}}</span>
                                 </div>
                                 <div class="panel-body" style="width:95%; margin:0 auto; border:none !important">
@@ -133,7 +178,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($projects as $key => $project)
+                                            @foreach ($projects as $project)
                                             <tr class="">
                                                 <td class="first-td">{{$project->id}}</td>
                                                 <td style="width:100%; height:100%">
@@ -150,18 +195,25 @@
                                                                 <div class="col-sm-8" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;">
                                                                     {{$project->desc}}
                                                                 </div>
-
-                                                                <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:20px; font-weight:bold">
+                                                                
+                                                                <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:30px; font-weight:bold">
+                                                                    <i class="fa fa-tag" style="margin-left: 2px;"></i>
+                                                                    {{projectCategories()[$project->category]}}
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:10px; font-weight:bold">
                                                                     <i class="fa fa-map-marker" style="margin-left: 2px;"></i>
                                                                     {{ksaCities()[$project->city]}}
                                                                 </div>
-                                                                <div  class="col-sm-12" style="margin-top:20px">
+
+
+                                                                <div class="col-sm-12" style="margin-top:10px">
                                                                     <div class="col-sm-12" style="padding:0">
-                                                                       <b style="color:#75787d; margin-left:3px">العروض</b> <b>{{$project->offers->count()}}</b>
+                                                                        <b style="color:#75787d; margin-left:3px">العروض</b> <b>{{$project->offers->count()}}</b>
                                                                     </div>
-                             
+
                                                                 </div>
-                                                                
+
                                                                 <div class="col-sm-4" style="margin-top:20px; direction:ltr">
                                                                     {{$project->created_at->format('h:i a')}}
                                                                 </div>
@@ -205,21 +257,7 @@
 
 
 @section('footer')
-<?php
-    if(count($_GET) > 0){
-        $query_param = '?';
-        foreach($_GET as $key => $val){
-            $query_param .=  $key.'='. $val.'&';
-        }
-    }
 
-?>
-
-<?php
-//    if(isset($_GET['keyword'])){
-//        
-//    }
-?>
 <script>
     $(function() {
         $('#example').DataTable({
@@ -238,22 +276,35 @@
 <script>
     $(function() {
         var keyword = '';
+        var category = '';
+        
         @if(isset($_GET['keyword']))
         var keyword = "{{$_GET['keyword']}}";
         @endif
+        
         // bind change event to select
         $('#city-filter').on('change', function() {
             var val = $(this).val(); // get selected value
             if (val) { // require a URL
                 window.location = "{{url('search/projects')}}?city=" + val + "&keyword=" + keyword; // redirect
             }
-            //          window.location = "{{url('search/projects')}};
             return false;
         });
+        
+        
+        // bind change event to select
+        $('#category-filter').on('change', function() {
+            var val = $(this).val(); // get selected value
+            if (val) { // require a URL
+                window.location = "{{url('search/projects')}}?category=" + val + "&keyword=" + keyword; // redirect
+            }
+            return false;
+        });
+        
     });
 
 </script>
 <script>
-    
+
 </script>
 @endsection

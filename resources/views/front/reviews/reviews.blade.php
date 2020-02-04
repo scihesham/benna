@@ -126,6 +126,13 @@
     .project-rev svg.icon {
         font-size: 32px !important
     }
+    
+    
+@media(max-width:768px){
+    .margin-sm{
+        margin-top: 20px;
+    }
+}
 
 </style>
 @endsection
@@ -141,7 +148,7 @@
         <div class="col-md-3">
             <div class="panel panel-default user-info">
                 <div class="panel-heading"><i class="fa fa-user" style="margin-left: 12px;"></i>{{$user->name}}</div>
-                <div class="panel-body" style="text-align:center; height:117px; padding-top:19px">
+                <div class="panel-body" style="text-align:center; height:124px; padding-top:19px">
                     <div class="col-md-12">
                         @if(empty($user->attachment_id))
                         <img src="{{url('public/design/adminlte/dist/img/avatar.png')}}" style="max-width:37%; " class='img-circle'>
@@ -176,10 +183,9 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@if($user->permission == 3)
-
+        
+        @if($user->permission == 3)
+        
         <?php
             if($user->type == 0){
                 $company_type = 'personal';
@@ -191,6 +197,38 @@
                 $company_type = 'institute';
             }
         ?>
+        
+
+        @if($company_type == 'company' || $company_type == 'institute')
+        <div class="col-md-12" style="margin-top:50px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-address-card" aria-hidden="true" style="margin-left: 12px;"></i>
+                    بيانات التواصل</div>
+                <div class="panel-body" style="text-align:center">
+                    <div class="col-sm-6" style="font-size:28px; color:green">
+                        <b>{{$user->$company_type->website}}</b>
+                        <div class="text-center" style="font-size:16px; padding:0; color:#999999">الموقع الالكتروني</div>
+                    </div>
+                    <div class="col-sm-6 margin-sm" style="font-size:28px;">
+                        <b>{{$user->$company_type->contact_social}}</b>
+                        <div class="" style="font-size:16px; color:#999999">البريد الالكتروني</div>
+                    </div>
+
+
+                        
+                        
+                </div>
+            </div>
+        </div>
+                
+        @endif
+        
+        @endif
+        
+    </div>
+</div>
+@if($user->permission == 3)
 
         <div class="container" style="margin-top: 50px; margin-bottom:80px; font-size:17px">
             <div class="row animatee" style="margin-top:0px">

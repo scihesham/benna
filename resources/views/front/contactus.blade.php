@@ -21,6 +21,12 @@
     .fields .panel-body {
         padding-top: 28px;
     }
+    
+    input{
+        border-radius: 4px;
+        border: 2px solid #EEE;
+        padding: 4px;
+    }
 </style>
 @endsection
 

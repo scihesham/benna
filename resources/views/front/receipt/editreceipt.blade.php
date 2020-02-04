@@ -164,7 +164,7 @@
 
                                 الملحقات
                             </label>
-                                <a href="{{url('public/upload')}}/{{$invoice->receipt->attachment->path}}" target="_blank">
+                                <a href="{{url('public/upload')}}/{{$invoice->receipt->attachment->path}}" target="_blank" style="display: block; font-size: 20px;">
                                         {{$invoice->receipt->attachment->name}}
                                 </a>
                         </div>
