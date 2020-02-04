@@ -92,7 +92,7 @@ class InvoiceController extends Controller
       $res = Receipt::create($request->all());
       
       if(is_object($res)){
-          return redirect('invoice')->with('success', 'تم الانشاء بنجاح'); 
+          return redirect('invoices')->with('success', 'تم الانشاء بنجاح'); 
       }
       else{
           return redirect()->back()->with('error', 'تم حدوث خطأ'); 
@@ -146,7 +146,7 @@ class InvoiceController extends Controller
       $res = $invoice->receipt->fill($request->all())->save();
       
       if($res == true){
-          return redirect('invoice')->with('success', 'تم التعديل بنجاح'); 
+          return redirect('invoices')->with('success', 'تم التعديل بنجاح'); 
       }
       else{
           return redirect()->back()->with('error', 'تم حدوث خطأ'); 
