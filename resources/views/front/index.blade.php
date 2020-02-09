@@ -84,7 +84,7 @@
 <img src="{{url('public/design/mandoby')}}/images/slider1.jpg" style="width:100%;">
     <div id="photo-title" style="position:absolute">
     <p>اضف مشروعك هنا</p>
-    <a href="{{url('register')}}" style='text-decoration:none'><span>اشترك الان</span></a>
+    <a href="{{url('register?action=owner')}}" style='text-decoration:none'><span>اشترك الان</span></a>
     </div>
 </div>
 

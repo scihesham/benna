@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use Illuminate\Support\Facades\Auth;
+use App\Attachment;
+use File;
 use Redirect;
 
 class ProjectController extends Controller
