@@ -264,7 +264,7 @@ class OfferStatusController extends Controller
                 <hr style="margin-bottom:0; margin-top:30px;"></a></li>';
           }
        }
-       $output .= '<li><a href="'.url('#').'" style="font-size:16px; font-weight:bold; color:green; padding:20px 20px">كافه العروض</a></li>';
+       $output .= '<li><a href="'.url('projects').'?project=non" style="font-size:16px; font-weight:bold; color:green; padding:20px 20px">كافه العروض</a></li>';
        
         return response()->json([
             'success' => 'تم جلب البيانات بنجاح',
@@ -290,7 +290,7 @@ class OfferStatusController extends Controller
         $res = $project->fill([
             'award_offer_seen' => 1
         ])->save();
-        $offers_count = awardProjects()->count();
+        $offers_count = awardProjects_not_seen()->count();
         
         
         if($res == true){

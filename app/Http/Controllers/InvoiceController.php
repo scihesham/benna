@@ -95,9 +95,14 @@ class InvoiceController extends Controller
     
     public function lastSeenInvoice(Request $request){
         $user = Auth::user();
-        $user->last_seen_invoice = $request->last_invoice;
-        $user->last_seen_receipt = $request->last_receipt;
-        $user->last_seen_overdate_invoice  = $request->last_overdate_invoice;
+        if(isset($request->last_overdate_invoice)){
+            $user->last_seen_overdate_invoice  = $request->last_overdate_invoice;
+        }
+        else{
+            $user->last_seen_invoice = $request->last_invoice;
+            $user->last_seen_receipt = $request->last_receipt; 
+        }
+
         $user->save();
         $data['status'] = 'success';
         return response()->json($data);
@@ -202,13 +207,63 @@ class InvoiceController extends Controller
            $last_invoice = 0; 
         }
        
-       $last_overdate_invoice = last_overdateInvoices_general();
                     
 
        return response()->json([
             'success' => 'تم جلب البيانات بنجاح',
             'last_invoice' => $last_invoice,
             'last_receipt' => $last_receipt,
+            'data' => $output
+        ]);
+       
+   }
+    
+    
+    
+   public function overdateInvoiceNotification(){
+       
+       $output = '';
+       
+        foreach(admin_overdateInvoices() as $notification){
+
+            // overdate invoices 
+
+            $output .= '<li id="" class="msg overdate-invoice" style="position:relative">';
+               $output .=  '<a href="'.url('admin/invoice?action=not-paid&invoice_id='.$notification->id).'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">';
+                   $output .=  '<center style="padding-top:10px">';
+                       $output .=  '<span style="color:red">فاتورة </span><br>';
+                        $output .= '('.$notification->offer->project->title.')';
+                    $output .= '</center><br>';
+                    $output .= '<span style="color:#75787d;display:inline-block;text-align:right;margin-top: 11px;">';
+                       $output .=  'برجاء العلم ان هذه الفاتورة قد انتهى';
+                        $output .= '<br>';
+
+                        $output .= 'ميعاد استحقاقها منذ';
+                      $output .= '<span style="color:#f70c0c"> ('.(-1 * $notification->days_num).') </span> ';
+                       $output .=  'ايام';
+                    $output .= '</span>';
+                    $output .= '<div class="overdate-invoice-content">';
+                        $output .= '<div class="col-md-6 text-left" style="padding-left:0;">';
+                           $output .=  '<h4>رقم المشروع :</h4>';
+                           $output .=  '<span>'.$notification->offer->project->id.'</span>';
+                       $output .=  '</div>';
+                        $output .= '<div class="col-md-6 text-right" style="padding-right:0">';
+                           $output .=  '<h4>المبلغ :</h4>';
+                            $output .= '<span>'.($notification->offer->milestones->sum('value') *  0.01).'</span>';
+                        $output .= '</div>';
+                    $output .= '</div>';
+                    $output .= '<hr style="margin-bottom:0; margin-top:10px;">';
+                $output .= '</a>';
+           $output .=  '</li>';
+        
+        }
+           
+       
+       $last_overdate_invoice = last_overdateInvoices_general();
+                    
+
+       return response()->json([
+            'success' => 'تم جلب البيانات بنجاح',
             'last_overdate_invoice' => $last_overdate_invoice,
             'data' => $output
         ]);

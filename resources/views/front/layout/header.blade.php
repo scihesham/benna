@@ -46,9 +46,9 @@
          @if(Auth::user())
            permission = "{{Auth::user()->permission}}";
            auth = true;
-           var award_count = "{{awardProjects()->count()}}";
+           var award_count = "{{awardProjects_not_seen()->count()}}";
          
-           var overdate_invoice_count = "{{count(overdateInvoices())}}";
+           var overdate_invoice_count = "{{count(overdateInvoicesUnseen())}}";
          
            var end_projects_notseen_count = "{{count(endProjects_not_seen())}}";
          

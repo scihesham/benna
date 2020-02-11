@@ -70,6 +70,7 @@
                     {{last_overdateInvoices_general()}}
                 </span>
                 
+                <!-- invoices and receipts -->
                 <li class="dropdown user user-menu">    
                     <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" id="invoice-bill">
 
@@ -78,7 +79,7 @@
                             </div>
                             <i class="fa fa-bell" style=""></i>
                       </a>
-                    <ul class="dropdown-menu  notification-menu">
+                    <ul class="dropdown-menu  notification-menu" style="width:350px">
                         @foreach(invoicesNotification() as $notification)
                         <!-- for receipt -->
                         @if(isset($notification->transfer_time) && isset($notification->invoice_id))
@@ -166,6 +167,50 @@
                         @endforeach
                     </ul>
                 </li>
+                <!-- end invoices and receipts -->
+                
+                <!-- overdate invoices -->
+                <li class="dropdown user user-menu">    
+                    <a href="#" class="dropdown-toggle notification" data-toggle="dropdown" id="overdate-invoice-bill">
+
+
+                            <div class="overdate-invoice-circle hide">
+                            </div>
+                            <i class="fa fa-bell" style=""></i>
+                      </a>
+                    <ul class="dropdown-menu  notification-menu" style="width:350px">
+                        @foreach(admin_overdateInvoices() as $notification)
+                        <li id="" class="msg overdate-invoice" style="position:relative">
+                            <a href="{{url('admin/invoice?action=not-paid&invoice_id='.$notification->id)}}" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">
+                                <center style="padding-top:10px">
+                                    <span style="color:red">فاتورة </span><br>
+                                    ({{$notification->offer->project->title}})
+                                </center><br>
+                                <span style="color:#75787d;display:inline-block;text-align:right;margin-top: 11px;">
+                                    برجاء العلم ان هذه الفاتورة قد انتهى
+                                    <br>
+                                    
+                                    ميعاد استحقاقها منذ
+                                  <span style="color:#f70c0c"> ({{-1 * $notification->days_num}}) </span> 
+                                    ايام
+                                </span>
+                                <div class="overdate-invoice-content">
+                                    <div class="col-md-6 text-left" style="padding-left:0;">
+                                        <h4>رقم المشروع :</h4>
+                                        <span>{{$notification->offer->project->id}}</span>
+                                    </div>
+                                    <div class="col-md-6 text-right" style="padding-right:0">
+                                        <h4>المبلغ :</h4>
+                                        <span>{{$notification->offer->milestones->sum('value') *  0.01}}</span>
+                                    </div>
+                                </div>
+                                <hr style="margin-bottom:0; margin-top:10px;">
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <!-- end overdate invoices -->
                 <!-- Control Sidebar Toggle Button -->
                 {{--<li>--}}
                 {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}

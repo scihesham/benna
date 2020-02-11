@@ -55,7 +55,10 @@ Route::group(['middleware' => ['web', 'maintainance', 'auth']], function(){
  Route::resource('projects', 'Front\ProjectController');
  Route::get('projects/{id}/delete', 'Front\ProjectController@destroy');
  Route::get('confirmdone/project/{project_id}', 'Front\ProjectController@confirmdone');
+    
  Route::get('notification/projects', 'Front\ProjectController@projectNotification');
+ Route::get('notification/user-invoice', 'Front\ProjectController@userInvoiceNotification');
+    
  Route::post('last-seen-project', 'Front\ProjectController@lastSeenProject');
  Route::post('last-seen-offer', 'Front\ProjectController@lastSeenOffer');
  Route::get('project/statistics/{project_id}', 'Front\ProjectController@projectStatistics');

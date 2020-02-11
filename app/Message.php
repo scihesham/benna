@@ -19,7 +19,7 @@ class Message extends Model
     }
     
     public function messageNotifications(){
-        return $this->hasOne('App\MessageNotification');
+        return $this->hasOne('App\MessageNotification')->withDefault();
     }
     
     public function offer(){

@@ -28,7 +28,7 @@ class Project extends Model
     }
     
     public function rating(){
-        return $this->hasOne('App\Evaluation');
+        return $this->hasOne('App\Evaluation')->withDefault();
     }
     
 }

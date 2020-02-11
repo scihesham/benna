@@ -160,7 +160,7 @@ class InvoiceController extends Controller
         $res = $invoice->fill([
             'seen_overdate_invoice' => 1
         ])->save();
-        $overdate_invoice_count = count(overdateInvoices());
+        $overdate_invoice_count = count(overdateInvoicesUnseen());
         if($res == true){
             $data['id'] = $request->invoice_id;
             $data['status'] = 'success';

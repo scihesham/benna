@@ -251,83 +251,33 @@ class ProjectController extends Controller
           $last_pro_id = $pro->id; 
        }
        
-        if(isset(Invoice::where('status', 1)
-                 ->whereHas('offer', function ($query) {
-                    $query->where('company_id',  Auth::user()->id);
-           })->latest()->first()->id)){
-            
-              $last_invoice_id = Invoice::where('status', 1)
-                    ->whereHas('offer', function ($query) {
-                        $query->where('company_id',  Auth::user()->id);
-               })->latest()->first()->id;
-        }
-        else{
-           $last_invoice_id = 0; 
-        }
-       
-        if(isset(Invoice::where('status', 0)
-                 ->whereHas('offer', function ($query) {
-                    $query->where('company_id',  Auth::user()->id);
-           })->latest()->first()->id)){
-            
-              $last_notpaid_invoice_id = Invoice::where('status', 0)
-                ->whereHas('offer', function ($query) {
-                    $query->where('company_id',  Auth::user()->id);
-               })->latest()->first()->id;
-        }
-        else{
-           $last_notpaid_invoice_id = 0; 
-        }
-       $overdate_invoice_count = count(overdateInvoices());
        $end_projects_notseen_count = count(endProjects_not_seen());
        $evaluation_notification_notseen_count = count(evaluationNotification_not_seen());
                                 
        $output = '';
-       $offers_count = awardProjects()->count();   
-       
-       foreach(awardProjects() as $project){
-           $output .= '<li id="award'.$project->id.'" class="msg awardoffer" style="position:relative"><a href="'.url('offer/project').'/'.$project->id.'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px"><center style="padding-top:10px"><span style="color:red">تهانينا تم اختيارك لتنفيذ </span><br>('.$project->title.')</span></center><br><span style="color:#75787d">'.$project->desc.'</span><a class="btn btn-success  seen-offer"     data_projectid="'.$project->id.'" onclick="return seenOffer('.$project->id.')">شكرا تمت الرؤيه</a>
-            <hr style="margin-bottom:0; margin-top:10px;"></a></li>';
-       }      
-       
-       
-        // overdate invoices 
-        foreach(overdateInvoices() as $invoice){
-            $output .= '<li id="overdate-invoice'.$invoice->id.'" class="msg overdate-invoice" style="position:relative">';
-               $output .= '<a href="'.url('invoice?invoice_id='.$invoice->id).'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">';
-                   $output .= '<center style="padding-top:10px">';
-                        $output .= '<span style="color:red">فاتورة </span><br>';
-                        $output .= '('.$invoice->offer->project->title.')';
-                   $output .= '</center><br>';
-                    $output .= '<span style="color:#75787d">';
-                      $output .=   'برجاء العلم ان هذه الفاتورة قد انتهى';
-                       $output .=  '<br>';
-
-                       $output .=  '&nbsp; ميعاد استحقاقها منذ ';
-                        $output .= '<span style="color:#f70c0c"> ('. -1 * $invoice->days_num .') </span>';
-                      $output .=  '  ايام ';
-                    $output .= '</span>';
-                    $output .= '<div class="overdate-invoice-content">';
-                        $output .= '<div class="col-md-6 text-right" style="padding-right:0">';
-                           $output .=  '<h4>رقم المشروع :</h4>';
-                           $output .=  '<span>'.$invoice->offer->project->id.'</span>';
-                       $output .=  '</div>';
-                        $output .=  '<div class="col-md-6 text-left" style="padding-left:0">';
-                           $output .=  '<h4>المبلغ :</h4>';
-                           $output .=  '<span>'.$invoice->offer->milestones->sum('value') *  0.01.'</span>';
-                        $output .= '</div>';
-                   $output .=  '</div>';
-                    $output .= '<a class="btn btn-success seen-overdate-invoice" onclick="return seenOverdateInvoice('.$invoice->id.')" style="">شكرا تمت الرؤيه</a>';
-                   $output .=  '<hr style="margin-bottom:0; margin-top:10px;">';
-                $output .= '</a>';
-            $output .= '</li>';
-        }
-                                            
+       $offers_count = awardProjects_not_seen()->count();   
+          
        
     foreach(invoices_projects() as $notification){
+        // awarded offers
+        if((isset($notification->type) && $notification->type == 'award project')){
+            $output .= '<li id="award'.$notification->id.'" class="msg awardoffer" style="position:relative">';
+               $output .=  '<a href="'.url('offer/project').'/'.$notification->id.'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">';
+                   $output .=  '<center style="padding-top:10px">';
+                       $output .=  '<span style="color:red">تهانينا تم اختيارك لتنفيذ </span><br>';
+                       $output .=  '('.$notification->title.')';
+                    $output .= '</center><br>';
+                    $output .= '<span style="color:#75787d">'.$notification->desc.'</span>';
+                    if($notification->award_offer_seen == '0'){
+                        $output .= '<a class="btn btn-success seen-offer" onclick="return seenOffer('.$notification->id.')">شكرا تمت الرؤيه</a>';
+                    }
+                    $output .= '<hr style="margin-bottom:0; margin-top:10px;">';
+               $output .=  '</a>';
+            $output .= '</li>';
+        }
     // for end projects 
-    if((isset($notification->type) && $notification->type == 'end project')){
-       $output .= ' <li class="msg" style="position:relative">';
+      else if((isset($notification->type) && $notification->type == 'end project')){
+           $output .= ' <li class="msg" style="position:relative">';
            $output .=  '<a href="'.url('messages').'/'.$notification->awardOffer->id.'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">';
                $output .=  '<center style="padding-top:10px;color:red">';
                   $output .=   '<span style="color:red">تهانينا تم انهاء مشروع </span><br>';
@@ -396,77 +346,159 @@ class ProjectController extends Controller
                $output .= '</a>';
             $output .= '</li>';
         }
-        else{
-            // for invoices
-            // not paid invoices
-            if($notification->status == '0'){
-              $output .=  '<li class="invoice-content">';
-                 $output .=   '<a href="'.url('invoice?invoice_id='.$notification->id).'" style="padding:0">';
-                   $output .= '<h2 class="text-center title">فاتورة </h2>';
-                   $output .= '<h3 class="text-center" style="display:block; margin-top:-6px">';
-                      $output .=  '('.$notification->offer->project->title.')';
-                   $output .= '</h3>';
-                   $output .= '<div class="notification-content">';
-                      $output .=  '<div class="col-md-6 text-right" style="padding-left:0">';
-                          $output .=  '<h4>رقم المشروع :</h4>';
-                           $output .= '<span>'.$notification->offer->project->id.'</span>';
-                       $output .= '</div>';
-                       $output .= '<div class="col-md-6 text-left">';
-                          $output .=  '<h4>المبلغ :</h4>';
-                           $output .= '<span>'.$notification->offer->milestones->sum('value') *  0.01.'</span>';
-                        $output .= '</div>';
-                   $output .= '</div>';
-                      $output .=  '<hr style="margin-bottom:0; margin-top:68px;">';
-                   $output .= '</a>';
-                $output .= '</li>';
-            }
-            /* for paid invoices */
-            else{
-                   $output .=  '<li class="invoice-content">';
-                      $output .=   '<a href="'.url('invoice?invoice_id='.$notification->id).'" style="padding:0">';
-                       $output .=  '<h2 class="text-center title">فاتورة </h2>';
-                        $output .=  '<h3 class="text-center" style="display:block; margin-top:-6px">';
-                           $output .=  '('.$notification->offer->project->title.')';
-                        $output .= '</h3>';
-                        $output .= '<div class="notification-content">';
-                            $output .= '<div class="col-md-12 text-right" style="padding-left:0">';
-                               $output .=  '<span>';
-                                  $output .=   'يسرنا ان نحيطكم علما انه تم تغيير';
-                               $output .=  '</span>';
-                                $output .= '<span style="display:block; margin-top: -5px; margin-bottom: 10px;">';   
-                                   $output .=  'حاله الفاتورة الى مدفوع';
-                                $output .= '</span>';
-                            $output .= '</div>';
-                            $output .= '<div class="col-md-6 text-right" style="padding-left:0">';
-                                $output .= '<h4>رقم المشروع :</h4>';
-                                $output .= '<span>'.$notification->offer->project->id.'</span>';
-                            $output .= '</div>';
-                            $output .= '<div class="col-md-6 text-left">';
-                                $output .= '<h4>المبلغ :</h4>';
-                                $output .= '<span>'.($notification->offer->milestones->sum('value') *  0.01).'</span>';
-                            $output .= '</div>';
-                        $output .= '</div>';
-                            $output .= '<hr style="margin-bottom:0; margin-top:145px;">';
-                       $output .=  '</a>';
-                    $output .= '</li>';
-            } /* end else for paid invoices */
-        }
+
     }
        $output .= '<li><a href="'.url('search/projects').'" style="font-size:16px; font-weight:bold; color:green; padding:20px 20px">عرض كافه المشاريع</a></li>';
        
         return response()->json([
             'success' => 'تم جلب البيانات بنجاح',
             'last_pro_id' => $last_pro_id,
-            'last_invoice_id' => $last_invoice_id,
-            'last_notpaid_invoice_id' => $last_notpaid_invoice_id,
             'offers_count' => $offers_count,
-            'overdate_invoice_count' => $overdate_invoice_count,
             'end_projects_notseen_count' => $end_projects_notseen_count,
             'evaluation_notification_notseen_count' => $evaluation_notification_notseen_count,
             'data' => $output
         ]);
        
    }
+    /* end project notification */
+    
+    
+    
+   public function userInvoiceNotification(){       
+        if(isset(Invoice::where('status', 1)
+                 ->whereHas('offer', function ($query) {
+                    $query->where('company_id',  Auth::user()->id);
+           })->latest()->first()->id)){
+            
+              $last_invoice_id = Invoice::where('status', 1)
+                    ->whereHas('offer', function ($query) {
+                        $query->where('company_id',  Auth::user()->id);
+               })->latest()->first()->id;
+        }
+        else{
+           $last_invoice_id = 0; 
+        }
+       
+        if(isset(Invoice::where('status', 0)
+                 ->whereHas('offer', function ($query) {
+                    $query->where('company_id',  Auth::user()->id);
+           })->latest()->first()->id)){
+            
+              $last_notpaid_invoice_id = Invoice::where('status', 0)
+                ->whereHas('offer', function ($query) {
+                    $query->where('company_id',  Auth::user()->id);
+               })->latest()->first()->id;
+        }
+        else{
+           $last_notpaid_invoice_id = 0; 
+        }
+       $overdate_invoice_count = count(overdateInvoicesUnseen());
+
+                                
+       $output = '';
+      
+       
+        foreach(user_invoices() as $notification){
+            if((isset($notification->days_num))){
+                $output .= '<li id="overdate-invoice'.$notification->id.'" class="msg overdate-invoice" style="position:relative">';
+                   $output .= '<a href="'.url('invoice?invoice_id='.$notification->id).'" style="font-size:16px; font-weight:bold; color:green; padding:0 20px">';
+                       $output .= '<center style="padding-top:10px">';
+                            $output .= '<span style="color:red">فاتورة </span><br>';
+                            $output .= '('.$notification->offer->project->title.')';
+                       $output .= '</center><br>';
+                        $output .= '<span style="color:#75787d">';
+                          $output .=   'برجاء العلم ان هذه الفاتورة قد انتهى';
+                           $output .=  '<br>';
+
+                           $output .=  '&nbsp; ميعاد استحقاقها منذ ';
+                            $output .= '<span style="color:#f70c0c"> ('. -1 * $notification->days_num .') </span>';
+                          $output .=  '  ايام ';
+                        $output .= '</span>';
+                        $output .= '<div class="overdate-invoice-content">';
+                            $output .= '<div class="col-md-6 text-right" style="padding-right:0">';
+                               $output .=  '<h4>رقم المشروع :</h4>';
+                               $output .=  '<span>'.$notification->offer->project->id.'</span>';
+                           $output .=  '</div>';
+                            $output .=  '<div class="col-md-6 text-left" style="padding-left:0">';
+                               $output .=  '<h4>المبلغ :</h4>';
+                               $output .=  '<span>'.$notification->offer->milestones->sum('value') *  0.01.'</span>';
+                            $output .= '</div>';
+                       $output .=  '</div>';
+                        if($notification->seen_overdate_invoice == 0){
+                            $output .= '<a class="btn btn-success seen-overdate-invoice" onclick="return seenOverdateInvoice('.$notification->id.')" style="">شكرا تمت الرؤيه</a>';
+                        }
+                       $output .=  '<hr style="margin-bottom:0; margin-top:10px;">';
+                    $output .= '</a>';
+                $output .= '</li>';
+            }
+            //not paid invoices 
+            else if($notification->status == '0'){
+                $output .= '<li class="invoice-content">';
+                    $output .= '<a href="'.url('invoices?invoice_id='.$notification->id).'" style="padding:0">';
+                        $output .= '<h2 class="text-center title">فاتورة </h2>';
+                      $output .=  '<h3 class="text-center" style="display:block; margin-top:-6px">';
+                           $output .= '('.$notification->offer->project->title.')';
+                        $output .= '</h3>';
+                        $output .= '<div class="notification-content">';
+                             $output .= '<div class="col-md-6 text-right" style="padding-left:0">';
+                               $output .= '<h4>رقم المشروع :</h4>';
+                               $output .= '<span>'.$notification->offer->project->id.'</span>';
+                           $output .= '</div>';
+                           $output .= '<div class="col-md-6 text-left">';
+                              $output .=  '<h4>المبلغ :</h4>';
+                               $output .= '<span>'.$notification->offer->milestones->sum('value') *  0.01.'</span>';
+                           $output .= '</div>';
+                       $output .= '</div>';
+                       $output .= '<hr style="margin-bottom:0; margin-top:68px;">';
+                    $output .= '</a>';
+                $output .= '</li>';
+            }
+            // for paid invoices 
+            else{
+                $output .= '<li class="invoice-content">';
+                    $output .= '<a href="'.url('invoices?invoice_id='.$notification->id).'" style="padding:0">';
+                        $output .= '<h2 class="text-center title">فاتورة </h2>';
+                        $output .= '<h3 class="text-center" style="display:block; margin-top:-6px">';
+                           $output .=  '('.$notification->offer->project->title.')';
+                        $output .= '</h3>';
+                        $output .= '<div class="notification-content">';
+                            $output .= '<div class="col-md-12 text-right" style="padding-left:0">';
+                                $output .= '<span>';
+                                 $output .=    'يسرنا ان نحيطكم علما انه تم تغيير';
+                               $output .=  '</span>';
+                               $output .=  '<span style="display:block; margin-top: -5px; margin-bottom: 10px;">';
+                                $output .=     'حاله الفاتورة الى مدفوع';
+                               $output .=  '</span>';
+                            $output .= '</div>';
+                            $output .= '<div class="col-md-6 text-right" style="padding-left:0">';
+                                $output .= '<h4>رقم المشروع :</h4>';
+                               $output .=  '<span>'.$notification->offer->project->id.'</span>';
+                            $output .= '</div>';
+                            $output .= '<div class="col-md-6 text-left">';
+                               $output .=  '<h4>المبلغ :</h4>';
+                                $output .= '<span>'.$notification->offer->milestones->sum('value') *  0.01.'</span>';
+                            $output .= '</div>';
+                        $output .= '</div>';
+                        $output .= '<hr style="margin-bottom:0; margin-top:145px;">';
+                    $output .= '</a> ';
+                $output .= '</li>';
+            }
+        }
+                                            
+
+       $output .= '<li><a href="'.url('invoices').'" style="font-size:16px; font-weight:bold; color:green; padding:20px 20px">عرض كافه الفواتير</a></li>';
+       
+        return response()->json([
+            'success' => 'تم جلب البيانات بنجاح',
+            'last_invoice_id' => $last_invoice_id,
+            'last_notpaid_invoice_id' => $last_notpaid_invoice_id,
+            'overdate_invoice_count' => $overdate_invoice_count,
+            'data' => $output
+        ]);
+       
+   }
+    
+/*end userInvoiceNotification*/
     
     public function confirmdone($project_id){
         $project = Project::find($project_id);
@@ -483,8 +515,8 @@ class ProjectController extends Controller
     
     
     public function lastSeenProject(Request $request){
-        $offers_count = awardProjects()->count();
-        $overdate_invoice_count = count(overdateInvoices());
+        $offers_count = awardProjects_not_seen()->count();
+        $overdate_invoice_count = count(overdateInvoicesUnseen());
         
         /* for end projects seen */
         $projects = endProjects_not_seen();
@@ -503,9 +535,13 @@ class ProjectController extends Controller
         /**/
         
         $user = Auth::user();
-        $user->last_seen_project = $request->last_project_id;
-        $user->last_seen_invoice = $request->last_invoice_id;
-        $user->last_seen_notpaid_invoice = $request->last_notpaid_invoice_id;
+        if(isset($request->last_project_id)){
+            $user->last_seen_project = $request->last_project_id;
+        }
+        else{
+            $user->last_seen_invoice = $request->last_invoice_id;
+            $user->last_seen_notpaid_invoice = $request->last_notpaid_invoice_id;
+        }
         $user->save();
         $data['status'] = 'success';
         $data['offers_count'] = $offers_count;

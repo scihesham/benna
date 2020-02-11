@@ -50,19 +50,19 @@ class User extends Authenticatable
     }
     
     public function owner(){
-        return $this->hasOne('App\OwnerDetail');
+        return $this->hasOne('App\OwnerDetail')->withDefault();
     }
     
     public function personal(){
-        return $this->hasOne('App\PersonalDetail');
+        return $this->hasOne('App\PersonalDetail')->withDefault();
     }
     
     public function company(){
-        return $this->hasOne('App\CompanyDetail');
+        return $this->hasOne('App\CompanyDetail')->withDefault();
     }
     
     public function institute(){
-        return $this->hasOne('App\InstituteDetail');
+        return $this->hasOne('App\InstituteDetail')->withDefault();
     }
     
     public function attachment(){

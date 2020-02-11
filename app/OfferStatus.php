@@ -28,7 +28,7 @@ class OfferStatus extends Model
     }
     
     public function offer(){
-        return $this->hasOne('App\Offer');
+        return $this->hasOne('App\Offer')->withDefault();
     }
     
     public function messages(){

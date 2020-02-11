@@ -10,8 +10,12 @@ $(function() {
     var last_seen_overdate_invoice = Number($('#last-seen-overdateInvoices').text());
     var last_overdate_invoice = Number($('#last-overdateInvoices').text());
 
-    if((last_seen_invoice < last_invoice) || (last_seen_receipt < last_receipt) || (last_seen_overdate_invoice < last_overdate_invoice)){
+    if( (last_seen_invoice < last_invoice) || (last_seen_receipt < last_receipt) ){
         $('.invoice-circle').removeClass('hide');
+    }
+    
+    if( (last_seen_overdate_invoice < last_overdate_invoice) ){
+        $('.overdate-invoice-circle').removeClass('hide');
     }
     
     
@@ -24,14 +28,39 @@ $(function() {
                data: {
                     _token: csrf_token,
                    last_invoice : Number($('#last-invoice').text()),
-                   last_receipt : Number($('#last-receipt').text()),
-                   last_overdate_invoice : Number($('#last-overdateInvoices').text())
+                   last_receipt : Number($('#last-receipt').text())
                },
                success:function(data)
                {
                    console.log(data);
                    if(data.status == 'success'){
                           $('.invoice-circle').addClass('hide');
+                   }
+
+                }
+              
+            })
+        /***/
+
+    });
+    
+    
+    $('#overdate-invoice-bill').click(function(){
+  
+        /***/
+            $.ajax({
+               url: url+'/admin/last-seen-invoice',
+               method: 'POST',
+               data: {
+                    _token: csrf_token,
+
+                   last_overdate_invoice : Number($('#last-overdateInvoices').text())
+               },
+               success:function(data)
+               {
+                   console.log(data);
+                   if(data.status == 'success'){
+                          $('.overdate-invoice-circle').addClass('hide');
                    }
 
                 }
@@ -53,12 +82,10 @@ $(function() {
                var j;
                for (j in data) {
                     if(j == 'success'){
-                        $('.notification-menu').html(data.data);
-                        if( (data.last_invoice > $('#last-invoice').text()) || (data.last_receipt > $('#last-receipt').text()) || (data.last_overdate_invoice > $('#last-overdateInvoices').text()) ){
-                            // last_project = data.last_pro_id;
+                        $('#invoice-bill .notification-menu').html(data.data);
+                        if( (data.last_invoice > $('#last-invoice').text()) || (data.last_receipt > $('#last-receipt').text()) ){
                             $('#last-invoice').text(data.last_invoice);
                             $('#last-receipt').text(data.last_receipt);
-                            $('#last-overdateInvoices').text(data.last_overdate_invoice);
                             $('.invoice-circle').removeClass('hide');
                         }
 
@@ -71,6 +98,36 @@ $(function() {
     
     window.setInterval(function(){
             invoiceNotification();
+    }, 7000);
+    
+    
+    
+     function overdateInvoiceNotification(){
+        $.ajax({
+           url:url+'/admin/notification/overdate-invoice',
+           method:'GET',
+           success:function(data)
+           {
+               console.log(data.last_receipt);
+
+               var j;
+               for (j in data) {
+                    if(j == 'success'){
+                        $('#overdate-invoice-bill .notification-menu').html(data.data);
+                        if( (data.last_overdate_invoice > $('#last-overdateInvoices').text()) ){
+                            $('#last-overdateInvoices').text(data.last_overdate_invoice);
+                            $('.overdate-invoice-circle').removeClass('hide');
+                        }
+
+                    }
+               }
+           }
+        })
+
+      }
+    
+    window.setInterval(function(){
+            overdateInvoiceNotification();
     }, 7000);
     
 

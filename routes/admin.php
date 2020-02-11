@@ -47,6 +47,7 @@ Route::group(['middleware' => ['web', 'admin']], function(){
  Route::get('admin/receipt/edit/{invoice_id}', 'InvoiceController@editReceipt');
  Route::post('admin/last-seen-invoice', 'InvoiceController@lastSeenInvoice');
  Route::get('admin/notification/invoice', 'InvoiceController@invoiceNotification');
+ Route::get('admin/notification/overdate-invoice', 'InvoiceController@overdateInvoiceNotification');
     
 });
 

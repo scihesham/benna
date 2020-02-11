@@ -47,7 +47,7 @@ body{
     left: 2px;
 }
 
-.pro-circle, .offer-circle{
+.pro-circle, .offer-circle, .user-invoice-circle{
     width: 10px;
     height: 10px;
     background: red;
@@ -61,7 +61,7 @@ body{
     color: #FFF;
 }
 
-.active .pro-circle, .active .offer-circle {
+.active .pro-circle, .active .offer-circle, .active .user-invoice-circle {
     top: 12px;
     left: 15px;
 }

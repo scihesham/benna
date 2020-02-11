@@ -19,7 +19,7 @@ $(function() {
        }
         /* if there is not seen overdate_invoices */
        if(overdate_invoice_count > 0){
-          $('.pro-circle').removeClass('hide');
+          $('.user-invoice-circle').removeClass('hide');
         }
         
         /* if there is end projects not seen */
@@ -32,8 +32,12 @@ $(function() {
            $('.pro-circle').removeClass('hide');
        }
         
-       if((last_project > last_seen_project ) || (last_seen_invoice < last_invoice) || (last_seen_notpaid_invoice < last_notpaid_invoice)){
+       if((last_project > last_seen_project )){
                 $('.pro-circle').removeClass('hide');
+        }
+        
+        if( (last_seen_invoice < last_invoice) || (last_seen_notpaid_invoice < last_notpaid_invoice)){
+                $('.user-invoice-circle').removeClass('hide');
         }
     }
     
@@ -86,8 +90,7 @@ $(function() {
            method:'GET',
            success:function(data)
            {
-//               console.log(data.last_pro_id +' '+ last_project + ' ' +  data.offers_count);
-               console.log('h '+data.last_invoice_id + ' ' + ($('#last-invoice').text()));
+//               console.log(data);
 
                var j;
                for (j in data) {
@@ -97,21 +100,10 @@ $(function() {
                             // last_project = data.last_pro_id;
                             $('#last-project').text(data.last_pro_id);
                             $('.pro-circle').removeClass('hide');
-                        }
-                        
-                        if(data.last_notpaid_invoice_id > $('#last-notpaid-invoice').text()){
-                            // last_project = data.last_pro_id;
-                            $('#last-notpaid-invoice').text(data.last_notpaid_invoice_id);
-                            $('.pro-circle').removeClass('hide');
-                        }
-                        
-                        if(data.last_invoice_id > $('#last-invoice').text()){
-                            $('#last-invoice').text(data.last_invoice_id);
-                           $('.pro-circle').removeClass('hide'); 
-                        }
-                        
+                        }                    
+
                         /* award offer not seen */
-                        if(data.offers_count > 0 || data.overdate_invoice_count > 0 || data.end_projects_notseen_count > 0 || data.evaluation_notification_notseen_count > 0){
+                        if(data.offers_count > 0 || data.end_projects_notseen_count > 0 || data.evaluation_notification_notseen_count > 0){
                             $('.pro-circle').removeClass('hide');
                         }
 
@@ -121,6 +113,44 @@ $(function() {
         })
 
       }
+    
+    
+     function userInvoiceNotification(){
+        $.ajax({
+           url:url+'/notification/user-invoice',
+           method:'GET',
+           success:function(data)
+           {
+//               console.log(data.last_pro_id +' '+ last_project + ' ' +  data.offers_count);
+               console.log('h '+data.last_notpaid_invoice_id + ' ' + ($('#last-notpaid-invoice').text()));
+
+               var j;
+               for (j in data) {
+                    if(j == 'success'){
+                        $('.dropdown .user-invoice-menu').html(data.data);
+                        
+                        if(data.last_notpaid_invoice_id > $('#last-notpaid-invoice').text()){
+                            $('#last-notpaid-invoice').text(data.last_notpaid_invoice_id);
+                            $('.user-invoice-circle').removeClass('hide');
+                        }
+                        
+                        if(data.last_invoice_id > $('#last-invoice').text()){
+                            $('#last-invoice').text(data.last_invoice_id);
+                            $('.user-invoice-circle').removeClass('hide'); 
+                        }
+                        
+                        /* award offer not seen */
+                        if( data.overdate_invoice_count > 0 ){
+                            $('.user-invoice-circle').removeClass('hide');
+                        }
+
+                    }
+               }
+           }
+        })
+
+      }
+    
     
      function offerNotification(){
         $.ajax({
@@ -164,6 +194,13 @@ $(function() {
         }, 7000);
     }
     
+    /* if user is company or admin or support */
+    if(permission == '3' || permission == '0' || permission == '1'){
+        window.setInterval(function(){
+                userInvoiceNotification();
+        }, 7000);
+    }
+    
 
     
     /* if user is owner */
@@ -180,26 +217,21 @@ $(function() {
     }
     
     
-    $('#pro-bill').click(function(){
-  
+    $('.award-project').click(function(){
         /***/
             $.ajax({
                url: url+'/last-seen-project',
                method: 'POST',
                data: {
                     _token: csrf_token,
-                   last_project_id : Number($('#last-project').text()),
-                   last_invoice_id : Number($('#last-invoice').text()),
-                   last_notpaid_invoice_id : Number($('#last-notpaid-invoice').text())
+                   last_project_id : Number($('#last-project').text())
                },
                success:function(data)
                {
                    console.log(data);
                    if(data.status == 'success'){
-                    //   last_project = data.last_pro_id
-//                       $('#last-project').text(data.last_pro_id);
                        /* award offer not seen or overdate_invoice not seen */
-                       if((data.offers_count ==  0) && (data.overdate_invoice_count == 0)){
+                       if((data.offers_count ==  0)){
                           $('.pro-circle').addClass('hide');
                        }
                    }
@@ -210,7 +242,35 @@ $(function() {
         /***/
 
     });
+
     
+    $('#user-invoice-bill').click(function(){
+  
+        /***/
+            $.ajax({
+               url: url+'/last-seen-project',
+               method: 'POST',
+               data: {
+                    _token: csrf_token,
+                   last_invoice_id : Number($('#last-invoice').text()),
+                   last_notpaid_invoice_id : Number($('#last-notpaid-invoice').text())
+               },
+               success:function(data)
+               {
+                   console.log(data);
+                   if(data.status == 'success'){
+                       /* overdate_invoice seen */
+                       if( (data.overdate_invoice_count == 0) ){
+                          $('.user-invoice-circle').addClass('hide');
+                       }
+                   }
+
+                }
+              
+            })
+        /***/
+
+    });
     
 
     $('#offer-bill').click(function(){
@@ -257,8 +317,8 @@ function seenOffer(award_project_id){
            {
                console.log(data);
                if(data.status == 'success'){
-                   $('#award'+data.id).addClass('hide');
-                   $('.bill-notification').addClass('open');
+                   $('#award'+data.id+' .seen-offer').addClass('hide');
+                   $('.award-project').addClass('open');
                    console.log(data.offers_count ==  0);
                    if(data.offers_count ==  0){
                         $('.pro-circle').addClass('hide');
@@ -286,11 +346,11 @@ function seenOverdateInvoice(overdate_invoice_id){
            {
                console.log('#overdate-invoice'+data.id);
                if(data.status == 'success'){
-                   $('#overdate-invoice'+data.id).addClass('hide');
-                   $('.bill-notification').addClass('open');
+                   $('#overdate-invoice'+data.id + ' .seen-overdate-invoice').addClass('hide');
+                   $('.user-invoice.bill-notification').addClass('open');
                    console.log(data.overdate_invoice_count ==  0);
                    if(data.overdate_invoice_count ==  0){
-                        $('.pro-circle').addClass('hide');
+                        $('.user-invoice-circle').addClass('hide');
                     }
                }
                 

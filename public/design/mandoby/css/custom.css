@@ -15,6 +15,46 @@ body, h1, h2, h3, h4, h5, h6 {
      
 }
 
+
+.user-invoice-menu .notification-content .col-md-6.text-left{
+        position: absolute;
+}
+
+.show-small.bill-notification.user-invoice{
+    position: absolute;
+    top: 50px;
+    left: 66px;
+}
+
+.show-small.msg-sm{
+    position: absolute;
+    top: 50px;
+    left: 66px;
+}
+
+.show-small .invoice-content hr{
+    margin-top: 45px !important;
+}
+
+.show-small.msg-sm .msg-circle{
+    top: -9px;
+    left: 17px;
+}
+
+.show-small .offer-circle{
+    top: 0
+}
+
+.show-small .pro-circle{
+    top: -2px;
+    left: 16px;
+}
+
+.show-small i{
+    font-size: 25px;
+    color: #FFF
+}
+
 textarea{resize: none}
 
 .btn{font-size: 17px !important;}
@@ -441,7 +481,7 @@ input[type=file] {font-size: 16px !important}
     .stat div{font-size: 20px !important}
     .request{width: 49% !important; text-align: center !important}
     .request-info{margin-bottom: 30px !important}
-    .msg-circle{display: none}
+/*    .msg-circle{display: none}*/
     .hide-small{display: none !important}
     .show-small{display: block !important}
     .col-sm-8.filter{float: left; bottom: -22px}

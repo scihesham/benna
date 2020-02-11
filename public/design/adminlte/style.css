@@ -217,7 +217,7 @@ select.form-control{
     width: 335px; max-height: 400px; overflow-y: auto
 }
 
-.invoice-circle {
+.invoice-circle, .overdate-invoice-circle{
     width: 11px;
     height: 11px;
     background: red;
