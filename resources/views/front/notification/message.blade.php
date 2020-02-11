@@ -8,12 +8,6 @@
                         <ul class="dropdown-menu msg-menu" style="left:0; right:auto; width:300px; padding: 0 1px; max-height: 500px; overflow-y: auto;">
                             <?php $i = 0?>
                             @foreach(messagesNotification() as $msg)
-                            <?php
-                            if($i < 4)
-                                $i++;
-                            else
-                                break;
-                        ?>
                             <li class="msg" style="position:relative">
                                 <!-- project messages -->
                                 @if(isset($msg->offer->project->title))
