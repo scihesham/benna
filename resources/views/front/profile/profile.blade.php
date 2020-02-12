@@ -258,6 +258,7 @@
                                 @endif
                             </div>
                                 
+<!--
                             <div class="col-sm-6" style="padding-left:0; margin:30px auto; margin-top:0">
                                 <label>مواقع التواصل الاجتماعي</label>
                                 <input class="form-control" name="contact_social" value="{{Auth::user()->company->contact_social}}" required>
@@ -267,8 +268,9 @@
                                     </span>
                                 @endif
                             </div>
+-->
                                 
-                            <div class="col-sm-6" style="padding-right:0; margin:30px auto; margin-top:0">
+                            <div class="col-sm-12" style="padding-right:0; margin:30px auto; margin-top:0">
                                 <label>البريد الالكتروني</label>
                                 <input class="form-control" name="email" value="{{Auth::user()->email}}" required>
                                 @if ($errors->has('email'))
@@ -279,7 +281,7 @@
                             </div>
                             <div style="width:100%; margin:30px auto">
                                 <label>الموقع الالكترونى</label>
-                                <input class="form-control" name="website" value="{{Auth::user()->company->website}}" required >
+                                <input class="form-control" name="website" value="{{Auth::user()->company->website}}"  >
                                 @if ($errors->has('website'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('website') }}</strong>
@@ -364,6 +366,7 @@
                                 @endif
                             </div>
                                 
+<!--
                             <div class="col-sm-6" style="padding-left:0; margin:30px auto; margin-top:0">
                                 <label>مواقع التواصل الاجتماعي</label>
                                 <input class="form-control" name="contact_social" value="{{Auth::user()->institute->contact_social}}" required>
@@ -373,8 +376,9 @@
                                     </span>
                                 @endif
                             </div>
+-->
                                 
-                            <div class="col-sm-6" style="padding-right:0; margin:30px auto; margin-top:0">
+                            <div class="col-sm-12" style="padding-right:0; margin:30px auto; margin-top:0">
                                 <label>البريد الالكتروني</label>
                                 <input class="form-control" name="email" value="{{Auth::user()->email}}" required>
                                 @if ($errors->has('email'))
@@ -385,7 +389,7 @@
                             </div>
                             <div style="width:100%; margin:30px auto">
                                 <label>الموقع الالكترونى</label>
-                                <input class="form-control" name="website" value="{{Auth::user()->institute->website}}" required >
+                                <input class="form-control" name="website" value="{{Auth::user()->institute->website}}"  >
                                 @if ($errors->has('website'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('website') }}</strong>
@@ -428,6 +432,40 @@
                                 @if ($errors->has('attachment'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('attachment') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                                
+                                
+                            <div class="col-sm-6" style="padding-left:0">
+                                <label for="facebook"> الفيس بوك</label>
+                                <input class=" form-control" id="facebook" placeholder="يمكنك ترك هذا الحقل فارغا" name="facebook" type="text" value="{{Auth::user()->facebook}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('facebook'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('facebook') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="col-sm-6" style="padding-right:0">
+                                <label for="instgram"> انستجرام</label>
+                                <input class=" form-control" id="instgram" placeholder="يمكنك ترك هذا الحقل فارغا" name="instgram" type="text" value="{{Auth::user()->instgram}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('instgram'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('instgram') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="col-sm-12" style="padding:0">
+                                <label for="twitter"> تويتر</label>
+                                <input class=" form-control" id="twitter" placeholder="يمكنك ترك هذا الحقل فارغا" name="twitter" type="text" value="{{Auth::user()->twitter}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('twitter'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('twitter') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -545,6 +583,54 @@
                                 </span>
                                 @endif
                             </div>
+                            
+                        @if(Auth::user()->permission == 3)
+
+                            
+                            <div style="width:90%; margin:30px auto">
+                                <label>الموقع الالكترونى</label>
+                                <input class="form-control" name="website" value="{{Auth::user()->personal->website}}"  >
+                                @if ($errors->has('website'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('website') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div  style="width:90%; margin:0 auto" >
+                            <div class="col-sm-6" style="padding-left:0">
+                                <label for="facebook"> الفيس بوك</label>
+                                <input class=" form-control" id="facebook" placeholder="يمكنك ترك هذا الحقل فارغا" name="facebook" type="text" value="{{Auth::user()->facebook}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('facebook'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('facebook') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="col-sm-6" style="padding-right:0">
+                                <label for="instgram"> انستجرام</label>
+                                <input class=" form-control" id="instgram" placeholder="يمكنك ترك هذا الحقل فارغا" name="instgram" type="text" value="{{Auth::user()->instgram}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('instgram'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('instgram') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                                </div>
+
+                            <div class=""  style="width:90%; margin:30px auto">
+                                <label for="twitter"> تويتر</label>
+                                <input class=" form-control" id="twitter" placeholder="يمكنك ترك هذا الحقل فارغا" name="twitter" type="text" value="{{Auth::user()->twitter}}" autocomplete="off" style=" margin:30px auto; margin-top:0" >
+                                <!-- For array -->
+                                @if ($errors->has('twitter'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('twitter') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        @endif
                             
                             <div style="width:90%; margin:30px auto">
                                 <label>الرقم السري</label>

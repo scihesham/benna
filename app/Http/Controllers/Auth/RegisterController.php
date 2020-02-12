@@ -80,6 +80,7 @@ class RegisterController extends Controller
 //                'permission' => 'required|integer|regex:/[2-3]{1}/',
                 'notes' => 'required|string',
                 'password' => 'required|string|min:6|confirmed',
+                'website' => 'nullable|string',
             ]);
         }
         
@@ -95,8 +96,8 @@ class RegisterController extends Controller
                 'notes' => 'required|string',
                 'contact_fname' => 'required|string',
                 'contact_lname' => 'required|string',
-                'contact_social' => 'required|string',
-                'website' => 'required|string',
+//                'contact_social' => 'required|string',
+                'website' => 'nullable|string',
                 'city' => 'required|integer',
                 'phone' => 'required|string',
             ]);
@@ -113,8 +114,8 @@ class RegisterController extends Controller
                 'notes' => 'required|string',
                 'contact_fname' => 'required|string',
                 'contact_lname' => 'required|string',
-                'contact_social' => 'required|string',
-                'website' => 'required|string',
+//                'contact_social' => 'required|string',
+                'website' => 'nullable|string',
                 'city' => 'required|integer',
                 'phone' => 'required|string',
             ]);
@@ -146,6 +147,9 @@ class RegisterController extends Controller
                 'permission' => $permission,
                 'type' => $type,
                 'password' => Hash::make($data['password']),
+                'facebook' => $data['facebook'],
+                'instgram' => $data['instgram'],
+                'twitter' => $data['twitter'],
             ]);
         $data['user_id'] = $user->id;
         if($data['user_type'] == 'owner'){

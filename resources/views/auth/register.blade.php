@@ -16,6 +16,10 @@
         font-size: 21px !important;
     }
     
+    input{
+        padding-left: 5px; padding-right: 5px;
+    }
+    
     
 @media only screen and (max-width: 767px) {
     .cont-nav.panel-heading{
@@ -202,6 +206,50 @@
                                             </span>
                                             @endif
                                         </div>
+                                        
+                                            <div class="col-sm-12">
+                                            <label for="website">الموقع الإلكتروني</label>
+
+                                            <input class=" " id="" placeholder="يمكنك ترك هذا الحقل فارغا" value="{{old('website')}}" name="website" type="text" >
+                                            @if ($errors->has('website'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('website') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="facebook"> الفيس بوك</label>
+                                            <input class=" " id="facebook" placeholder="يمكنك ترك هذا الحقل فارغا" name="facebook" type="text" value="{{old('facebook')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('facebook'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('facebook') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="instgram"> انستجرام</label>
+                                            <input class=" " id="instgram" placeholder="يمكنك ترك هذا الحقل فارغا" name="instgram" type="text" value="{{old('instgram')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('instgram'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('instgram') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-12">
+                                            <label for="twitter"> تويتر</label>
+                                            <input class=" " id="twitter" placeholder="يمكنك ترك هذا الحقل فارغا" name="twitter" type="text" value="{{old('twitter')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('twitter'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('twitter') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
                                         <div class="col-sm-6">
                                             <label for="password_confirmation">تاكيد كلمه المرور</label>
                                             <input class=" " id="" placeholder="" name="password_confirmation" type="password" required>
@@ -330,6 +378,7 @@
                                             </span>
                                             @endif
                                         </div>
+<!--
                                         <div class="col-sm-6">
                                             <label> مواقع التواصل الاجتماعي</label>
 
@@ -340,7 +389,8 @@
                                             </span>
                                             @endif
                                         </div>
-                                        <div class="col-sm-6">
+-->
+                                        <div class="col-sm-12">
                                             <label for="email">البريد الإلكتروني</label>
 
                                             <input name="email" type="email" value="{{old('email')}}" autocomplete="off" required>
@@ -360,7 +410,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" value="{{old('website')}}" name="website" type="text" required>
+                                            <input class=" " id="" placeholder="يمكنك ترك هذا الحقل فارغا" value="{{old('website')}}" name="website" type="text" >
                                             @if ($errors->has('website'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('website') }}</strong>
@@ -385,6 +435,39 @@
                                                 <option value="{{$key}}">{{$city}}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="facebook"> الفيس بوك</label>
+                                            <input class=" " id="facebook" placeholder="يمكنك ترك هذا الحقل فارغا" name="facebook" type="text" value="{{old('facebook')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('facebook'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('facebook') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="instgram"> انستجرام</label>
+                                            <input class=" " id="instgram" placeholder="يمكنك ترك هذا الحقل فارغا" name="instgram" type="text" value="{{old('instgram')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('instgram'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('instgram') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-12">
+                                            <label for="twitter"> تويتر</label>
+                                            <input class=" " id="twitter" placeholder="يمكنك ترك هذا الحقل فارغا" name="twitter" type="text" value="{{old('twitter')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('twitter'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('twitter') }}</strong>
+                                            </span>
+                                            @endif
                                         </div>
                                         
                                        <div class="col-sm-6 position-right">
@@ -518,6 +601,7 @@
                                             </span>
                                             @endif
                                         </div>
+<!--
                                         <div class="col-sm-6">
                                             <label> مواقع التواصل الاجتماعي</label>
 
@@ -528,7 +612,8 @@
                                             </span>
                                             @endif
                                         </div>
-                                        <div class="col-sm-6">
+-->
+                                        <div class="col-sm-12">
                                             <label for="email">البريد الإلكتروني</label>
 
                                             <input name="email" type="email" value="{{old('email')}}" autocomplete="off" required>
@@ -548,7 +633,7 @@
 
 
 
-                                            <input class=" " id="" placeholder="" value="{{old('website')}}" name="website" type="text" required>
+                                            <input class=" " id="" placeholder="يمكنك ترك هذا الحقل فارغا" value="{{old('website')}}" name="website" type="text" >
                                             @if ($errors->has('website'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('website') }}</strong>
@@ -573,6 +658,39 @@
                                                 <option value="{{$key}}">{{$city}}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="facebook"> الفيس بوك</label>
+                                            <input class=" " id="facebook" placeholder="يمكنك ترك هذا الحقل فارغا" name="facebook" type="text" value="{{old('facebook')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('facebook'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('facebook') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <label for="instgram"> انستجرام</label>
+                                            <input class=" " id="instgram" placeholder="يمكنك ترك هذا الحقل فارغا" name="instgram" type="text" value="{{old('instgram')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('instgram'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('instgram') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-sm-12">
+                                            <label for="twitter"> تويتر</label>
+                                            <input class=" " id="twitter" placeholder="يمكنك ترك هذا الحقل فارغا" name="twitter" type="text" value="{{old('twitter')}}" autocomplete="off" >
+                                            <!-- For array -->
+                                            @if ($errors->has('twitter'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('twitter') }}</strong>
+                                            </span>
+                                            @endif
                                         </div>
                                         
                                         <div class="col-sm-6 position-right">

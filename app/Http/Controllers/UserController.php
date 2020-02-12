@@ -189,8 +189,8 @@ class UserController extends Controller
                 'notes' => ['required', 'string'],
                 'contact_fname' => ['required', 'string'],
                 'contact_lname' => ['required', 'string'],
-                'contact_social' => ['required', 'string'],
-                'website' => ['required', 'string'],
+//                'contact_social' => ['required', 'string'],
+//                'website' => ['required', 'string'],
                 'city' => ['required', 'integer'],
                 'phone' => ['required', 'string'],
                 'attachment' => ['nullable', 'mimes:jpeg,png,jpg', 'max:2048'],
@@ -245,6 +245,9 @@ class UserController extends Controller
             $res = $user->fill([
                 'name' => $request->name,
                 'email' => $request->email,
+                'facebook' => $request->facebook,
+                'instgram' => $request->instgram,
+                'twitter' => $request->twitter,
             ])->save();
         }
         else{
@@ -252,6 +255,9 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'facebook' => $request->facebook,
+                'instgram' => $request->instgram,
+                'twitter' => $request->twitter,
             ])->save();  
         }
         $request['user_id'] = $user->id;

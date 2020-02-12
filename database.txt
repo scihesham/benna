@@ -1,1 +1,19 @@
-ALTER TABLE `receipts` ADD `attachment_id` INT NOT NULL AFTER `invoice_id`;
+ALTER TABLE `receipts` ADD `bank_from` VARCHAR(255) NOT NULL AFTER `bank`;
+
+
+
+ALTER TABLE `users` ADD `facebook` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `permission`, ADD `instgram` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `facebook`, ADD `twitter` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `instgram`;
+
+
+ALTER TABLE `company_details` CHANGE `contact_social` `contact_social` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+
+ALTER TABLE `institute_details` CHANGE `contact_social` `contact_social` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE `personal_details` ADD `website` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `notes`;
+
+ALTER TABLE `personal_details` CHANGE `website` `website` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `institute_details` CHANGE `website` `website` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE `company_details` CHANGE `website` `website` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;

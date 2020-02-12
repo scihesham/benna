@@ -44,6 +44,18 @@
                                 </span>
                                 @endif
                             </div>
+            
+                            <div class="form-group" style="margin-top:10px">
+                                <label for="content">
+                                     البنك المحول منه
+                                </label>
+                                <input name="bank_from" type="text" id="bank_from" class="form-control" value="{{$invoice->receipt->bank_from}}" required>
+                                @if ($errors->has('bank_from'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('bank_from') }}</strong>
+                                </span>
+                                @endif
+                            </div>
 
                         <div class="form-group" style="margin-top:10px">
                             <label for="content">

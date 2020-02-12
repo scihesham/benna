@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Receipt extends Model
 {
     protected $fillable = [
-         'money', 'bank', 'transfer_time', 'notes', 'invoice_id', 'transfer_name', 'attachment_id'
+         'money', 'bank', 'transfer_time', 'notes', 'invoice_id', 'transfer_name', 'attachment_id',
+         'bank_from'
     ];
     
     

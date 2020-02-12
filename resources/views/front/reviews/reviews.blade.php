@@ -199,7 +199,6 @@
         ?>
         
 
-        @if($company_type == 'company' || $company_type == 'institute')
         <div class="col-md-12" style="margin-top:50px">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -211,18 +210,26 @@
                         <div class="text-center" style="font-size:16px; padding:0; color:#999999">الموقع الالكتروني</div>
                     </div>
                     <div class="col-sm-6 margin-sm" style="font-size:28px;">
-                        <b>{{$user->$company_type->contact_social}}</b>
-                        <div class="" style="font-size:16px; color:#999999">موقع التواصل الاجتماعي</div>
+                        <b>{{$user->facebook}}</b>
+                        <div class="" style="font-size:16px; color:#999999">الفيس بوك</div>
                     </div>
-
-
+                    <div>
+                    <div class="col-sm-6 margin-sm" style="font-size:28px; margin-top:15px">
+                        <b>{{$user->twitter}}</b>
+                        <div class="" style="font-size:16px; color:#999999">تويتر</div>
+                    </div>
+                    
+                    <div class="col-sm-6 margin-sm" style="font-size:28px; margin-top:15px">
+                        <b>{{$user->instgram}}</b>
+                        <div class="" style="font-size:16px; color:#999999">انستجرام</div>
+                    </div>
+                        </div>
                         
                         
                 </div>
             </div>
         </div>
                 
-        @endif
         
         @endif
         
