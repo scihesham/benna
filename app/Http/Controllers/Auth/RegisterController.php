@@ -141,7 +141,18 @@ class RegisterController extends Controller
            $type = 0;  
         }
 
-        $user =  User::create([
+        if($permission == 2){
+            $user =  User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'permission' => $permission,
+                'type' => $type,
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        else{
+            
+            $user =  User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'permission' => $permission,
@@ -151,6 +162,9 @@ class RegisterController extends Controller
                 'instgram' => $data['instgram'],
                 'twitter' => $data['twitter'],
             ]);
+            
+        }
+
         $data['user_id'] = $user->id;
         if($data['user_type'] == 'owner'){
             OwnerDetail::create($data);
