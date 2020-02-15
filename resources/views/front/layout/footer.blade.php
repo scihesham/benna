@@ -80,7 +80,7 @@
 
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu ">
-                                <li><a href="{{route('register')}}" style="color:#000 !important; font-size:20px !important">
+                                <li><a href="{{url('register?action=owner')}}" style="color:#000 !important; font-size:20px !important">
                                         تسجيل حساب جديد
                                     </a></li>
 
