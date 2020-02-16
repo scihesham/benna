@@ -193,8 +193,7 @@ class FrontController extends Controller
             return redirect()->back()->with('error', $validation->messages()->first());
         }
 //        dd($request->all());
-
-        $receipt = "‪bennaquick@gmail.com‬";
+        $receipt = "bennaquick@gmail.com";
         Mail::to($receipt)
                 ->send(new ContactMail($request->company_name, $request->name, $request->email, $request->message));
         
