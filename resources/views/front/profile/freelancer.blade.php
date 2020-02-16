@@ -19,7 +19,13 @@
 
         }
     }
-
+    
+    
+    @media (max-width: 1199px){
+        .re-size {
+            margin-top: 15px !important;
+        }
+    }
     th {
         display: none
     }
@@ -107,7 +113,11 @@
         font-size: 34px !important
     }
 
-/*    .re_size{margin-top: 240px}*/
+    .re_size{margin-top: 140px}
+    
+    table.dataTable tbody td {
+        border: none !important
+    }
 </style>
 @endsection
 
@@ -147,7 +157,14 @@
                                                 <td style="width:100%; height:100%">
                                                     <a href="{{url('reviews'.'/'.$user->id)}}" style="text-decoration:none;color:#000" target="_blank">
                                                         <div class="panel panel-default hide-991">
-                                                            <div class="panel-heading"><i class="fa fa-user" style="margin-left: 12px;"></i>{{$user->name}}</div>
+                                                            <div class="panel-heading">
+                                                                    @if(empty($user->attachment_id))
+                                                                    <i class="fa fa-user" style="margin-left: 12px;"></i>
+                                                                    @else
+                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style="max-width:45%; border-radius:50%;max-height:85px;margin-left: 12px;" class='img-circle'>
+                                                                    @endif
+                                                                
+                                                                {{$user->name}}</div>
                                                             <div class="panel-body">
 
                                                                 <div class="col-md-4" style="font-size:32px; color:green">
@@ -174,7 +191,14 @@
                                                         </div>
                                                         <!------------------------------------->
                                                         <div class="panel panel-default hide-def">
-                                                            <div class="panel-heading"><i class="fa fa-user" style="margin-left: 12px;"></i>{{$user->name}}</div>
+                                                            <div class="panel-heading">
+                                                                    @if(empty($user->attachment_id))
+                                                                    <i class="fa fa-user" style="margin-left: 12px;"></i>
+                                                                    @else
+                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style="max-width:45%; border-radius:50%;max-height:85px;margin-left: 12px;" class='img-circle'>
+                                                                    @endif
+                                                                
+                                                                {{$user->name}}</div>
                                                             <div class="panel-body">
 
                                                                 <div class="col-xs-4" style="font-size:22px; color:green">
