@@ -161,7 +161,7 @@
                                                                     @if(empty($user->attachment_id))
                                                                     <i class="fa fa-user" style="margin-left: 12px;"></i>
                                                                     @else
-                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style="max-width:45%; border-radius:50%;max-height:85px;margin-left: 12px;" class='img-circle'>
+                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style=" border-radius:50%;max-height:30px;margin-left: 12px;" class='img-circle'>
                                                                     @endif
                                                                 
                                                                 {{$user->name}}</div>
@@ -195,7 +195,7 @@
                                                                     @if(empty($user->attachment_id))
                                                                     <i class="fa fa-user" style="margin-left: 12px;"></i>
                                                                     @else
-                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style="max-width:45%; border-radius:50%;max-height:85px;margin-left: 12px;" class='img-circle'>
+                                                                    <img src="{{url('public/upload')}}/{{$user->attachment->path}}" style=" border-radius:50%;max-height:30px;margin-left: 12px;" class='img-circle'>
                                                                     @endif
                                                                 
                                                                 {{$user->name}}</div>
