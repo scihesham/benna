@@ -153,7 +153,7 @@
                                 <div class="col-sm-2  col-sm-offset-2">
                                     <input  type="number" class="form-control" value="{{$milestone->value}}" disabled>
                                 </div>
-                                <div class="col-sm-8" style="padding:0 !important">
+                                <div class="col-sm-8" >
                                     <input class="form-control" value="{{$milestone->desc}}" disabled>
                                 </div>
 
@@ -221,7 +221,7 @@
                             <div class="col-sm-2  col-sm-offset-2">
                                 <input  type="number" class="form-control" value="{{$milestone->value}}" disabled>
                             </div>
-                            <div class="col-sm-8" style="padding:0 !important">
+                            <div class="col-sm-8" >
                                 <input class="form-control" value="{{$milestone->desc}}" disabled>
                             </div>
 
