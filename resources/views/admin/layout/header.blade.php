@@ -85,26 +85,27 @@
                         @if(isset($notification->transfer_time) && isset($notification->invoice_id))
                             @if($notification->invoice->status == '0')
                                 <li class="receipt-content">
-                                    <a href="{{url('admin/invoice?action=not-paid&invoice_id='.$notification->invoice_id)}}">
+                                    <a href="{{url('admin/invoice?action=not-paid&invoice_id='.$notification->invoice_id)}}"
+                                       style="color:#000">
                                     <h3 class="text-center title">ايصال </h3>
                                     <h4 class="text-center">
                                         ({{$notification->invoice->offer->project->title}})
                                     </h4>
                                     <div class="notification-content">
-                                        <div class="col-md-6 text-right" style="padding-left:0">
+                                        <div class="col-xs-6 text-right" style="padding-left:0">
                                             <h4>رقم المشروع :</h4>
                                             <span>{{$notification->invoice->offer->project->id}}</span>
                                         </div>
-                                        <div class="col-md-6 text-right">
+                                        <div class="col-xs-6 text-right">
                                             <h4>البنك :</h4>
                                             <span>{{$notification->bank}}</span>
                                         </div>
 
-                                        <div class="col-md-6 text-right" style="padding-left:0">
+                                        <div class="col-xs-6 text-right" style="padding-left:0">
                                             <h4>المحول :</h4>
                                             <span>{{$notification->transfer_name}}</span>
                                         </div>
-                                        <div class="col-md-6 text-right">
+                                        <div class="col-xs-6 text-right">
                                             <h4>المبلغ :</h4>
                                             <span>{{$notification->money}}</span>
                                         </div>
@@ -129,11 +130,11 @@
                                     ايام
                                 </span>
                                 <div class="overdate-invoice-content">
-                                    <div class="col-md-6 text-left" style="padding-left:0;">
+                                    <div class="col-xs-6 text-left" style="padding-left:0;">
                                         <h4>رقم المشروع :</h4>
                                         <span>{{$notification->offer->project->id}}</span>
                                     </div>
-                                    <div class="col-md-6 text-right" style="padding-right:0">
+                                    <div class="col-xs-6 text-right" style="padding-right:0">
                                         <h4>المبلغ :</h4>
                                         <span>{{$notification->offer->milestones->sum('value') *  0.01}}</span>
                                     </div>
@@ -144,17 +145,17 @@
                         @else
                         <!-- for invoice -->
                         <li class="invoice-content">
-                            <a href="{{url('admin/invoice?action=not-paid&invoice_id='.$notification->id)}}">
+                            <a href="{{url('admin/invoice?action=not-paid&invoice_id='.$notification->id)}}" style="color:#000">
                             <h3 class="text-center title">فاتورة </h3>
                             <h4 class="text-center">
                                 ({{$notification->offer->project->title}})
                             </h4>
                             <div class="notification-content">
-                                <div class="col-md-6 text-right" style="padding-left:0">
+                                <div class="col-xs-6 text-right" style="padding-left:0">
                                     <h4>رقم المشروع :</h4>
                                     <span>{{$notification->offer->project->id}}</span>
                                 </div>
-                                <div class="col-md-6 text-right">
+                                <div class="col-xs-6 text-right">
                                     <h4>المبلغ :</h4>
                                     <span>{{$notification->offer->milestones->sum('value') *  0.01}}</span>
                                 </div>
@@ -195,11 +196,11 @@
                                     ايام
                                 </span>
                                 <div class="overdate-invoice-content">
-                                    <div class="col-md-6 text-left" style="padding-left:0;">
+                                    <div class="col-xs-6 text-left" style="padding-left:0;">
                                         <h4>رقم المشروع :</h4>
                                         <span>{{$notification->offer->project->id}}</span>
                                     </div>
-                                    <div class="col-md-6 text-right" style="padding-right:0">
+                                    <div class="col-xs-6 text-right" style="padding-right:0">
                                         <h4>المبلغ :</h4>
                                         <span>{{$notification->offer->milestones->sum('value') *  0.01}}</span>
                                     </div>
