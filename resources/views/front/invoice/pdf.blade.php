@@ -115,9 +115,7 @@
             &nbsp;
         </div>
         <div class="col col-2 company-detail">
-            <span>بناء كويك</span><br>
-            <span>السعوديه الرياض</span><br>
-            <p style="margin-bottom:-12px"></p><span>0102200220</span>
+            <img src="{{url('public/design/mandoby')}}/images/commercial.jpeg" style="width:20%; min-width: 105px;">
         </div>
     </div>
 
@@ -160,7 +158,7 @@
 
     </table>
 
-    <p style="margin-top:70px; font-size:16px; text-align:justify">
+    <p style="margin-top:50px; font-size:16px; text-align:justify">
         - من المعلوم للمستخدم قيام الموقع باقتطاع عمولته من ("المستقل") وليس ("صاحب المشروع")؛ ولذا يجب على المستقل – سواء كان فرد أو منشأة أو من تبنى تنفيذ المشروع مهما كان - الأخذ بعين الاعتبار عمولة الموقع التي سيتم اقتطاعها من المبلغ الذي وضعه في العرض، علمًا بان تلك العمولة محددة بنسبة قدرها (1 %) من القيمة الإجمالية للمشروع وغير قابلة للاسترداد.
         
     </p>

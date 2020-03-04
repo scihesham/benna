@@ -30,9 +30,9 @@ class MilestoneController extends Controller
                 }else{
                     $milestone->status = 1;
                     $res = $milestone->save();
-                    $milestone->offer->project->company->fill([
-                        'balance' => $milestone->offer->project->company->balance + $milestone->value
-                    ])->save();
+//                    $milestone->offer->project->company->fill([
+//                        'balance' => $milestone->offer->project->company->balance + $milestone->value
+//                    ])->save();
                     if($res == true){
                         return redirect()->back()->with('success', 'تم التحرير بنجاح');
                     }

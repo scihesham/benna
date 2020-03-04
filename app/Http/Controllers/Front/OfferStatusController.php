@@ -177,8 +177,8 @@ class OfferStatusController extends Controller
 //                if(Auth::user()->balance >= $offer->milestones->sum('value')){
                     
                     $owner = User::find(Auth::user()->id);
-                    $owner->balance = Auth::user()->balance - $offer->milestones->sum('value');
-                    $owner->save();
+//                    $owner->balance = Auth::user()->balance - $offer->milestones->sum('value');
+//                    $owner->save();
                     
                     $offer->project->fill([
                         'status' => 1,
