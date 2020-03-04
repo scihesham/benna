@@ -71,7 +71,7 @@
 
 <!--==================================================-->
 
-<div class="container" style="margin-top: 250px; ">
+<div class="container re-size" style="margin-top: 250px; ">
     <div class="row animatee">
         <div class="col-md-12">
             <div class="panel panel-default">
