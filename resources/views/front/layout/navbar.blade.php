@@ -35,10 +35,74 @@
     @if(Auth::user()->permission == '3' || Auth::user()->permission == '0' || Auth::user()->permission == '1')
 
         <li class="dropdown show-small bill-notification award-project text-left" style="display:none;">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+
+                <span id="last-seen-project-sm" class="hide">{{Auth::user()->last_seen_project}}</span>
+                <span id="last-project-sm" class="hide">
+                    @if(isset(\App\Project::latest()->first()->id))
+                    {{\App\Project::latest()->first()->id}}
+                    @else
+                    0
+                    @endif
+                </span>
+
+
+                <div class="pro-circle hide">
+
+                </div>
+                <i class="fa fa-bell" style=""></i>
+
+            </a>
+            
             @include('front.notification.awardproject')
         </li>
 
         <li class="dropdown show-small bill-notification user-invoice text-left" style="display:none;">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill-sm">
+
+
+                            <span id="last-seen-invoice-sm" class="hide">{{Auth::user()->last_seen_invoice}}</span>
+
+                            <span id="last-invoice-sm" class="hide">
+                                @if(isset(\App\Invoice::where('status', 1)
+                                ->whereHas('offer', function ($query) {
+                                $query->where('company_id', Auth::user()->id);
+                                })->latest()->first()->id))
+                                {{
+                               \App\Invoice::where('status', 1)
+                                ->whereHas('offer', function ($query) {
+                                    $query->where('company_id',  Auth::user()->id);
+                               })->latest()->first()->id
+                            }}
+                                @else
+                                0
+                                @endif
+                            </span>
+
+                            <span id="last-seen-notpaid-invoice-sm" class="hide">{{Auth::user()->last_seen_notpaid_invoice}}</span>
+
+                            <span id="last-notpaid-invoice-sm" class="hide">
+                                @if(isset(\App\Invoice::where('status', 0)
+                                ->whereHas('offer', function ($query) {
+                                $query->where('company_id', Auth::user()->id);
+                                })->latest()->first()->id))
+                                {{
+                               \App\Invoice::where('status', 0)
+                                ->whereHas('offer', function ($query) {
+                                    $query->where('company_id',  Auth::user()->id);
+                               })->latest()->first()->id
+                            }}
+                                @else
+                                0
+                                @endif
+                            </span>
+
+                            <div class="user-invoice-circle hide">
+
+                            </div>
+                            <i class="fa fa-bell" style=""></i>
+
+                        </a>
             @include('front.notification.userinvoice')
         </li>
             
@@ -48,12 +112,35 @@
             
     @if(Auth::user()->permission == '2' )
         <li class="dropdown show-small text-left" style="display:none;">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill-sm">
+
+                <span id="last-seen-offer-sm" class="hide">{{Auth::user()->last_seen_offer}}</span>
+                <span id="last-offer-sm" class="hide">
+                    @if(isset(\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id))
+                    {{\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id}}
+                    @else
+                    0
+                    @endif
+                </span>
+                <div class="offer-circle hide">
+
+                </div>
+                <i class="fa fa-bell" style=""></i>
+
+            </a>
             @include('front.notification.offer')
         </li>
     @endif
             
             
     <li class="dropdown show-small msg-sm" style="display:none; {{Auth::user()->permission == '3' ? 'left:120px;' : ''}}">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class="msg-circle hide">
+                <span id="unseen-count-sm">{{$unseen_count}}</span>
+            </div>
+            <i class="fa fa-envelope" style=""></i>
+
+        </a>
         @include('front.notification.message')
     </li>
 
@@ -133,77 +220,53 @@
                     </li>
 
 
-                    <!--
 
-                <li class=""><a href="">
-
-                        خدماتنا
-
-
-                    </a>
-
-
-                </li>
--->
-
-
-
-                    <!--
-                <li class=""><a href="">
-
-
-
-                        اتصل بنا
-
-                    </a>
--->
 
 
 
                     </li>
 
                     @if(Auth::user())
-                    <!--
-                <li>
-                    <a href="#">
-                        <i class="fa fa-envelope" style=""></i>
-                    </a>
-                </li>
--->
 
-
-<!--
-                    <li class="show-small" style="display:none"><a href="">
-                            <a href="{{url('allmessages')}}" style=" color:green;padding-top:0">
-                                <i class="fa fa-envelope" style="margin-top:-4px"></i> &nbsp;
-
-                                عرض كافه الرسائل</a>
-
-                    </li>
--->
 
                     <li class="dropdown hide-small">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <div class="msg-circle hide">
+                                <span id="unseen-count">{{$unseen_count}}</span>
+                            </div>
+                            <i class="fa fa-envelope" style=""></i>
+
+                        </a>
                         @include('front.notification.message')
                     </li>
                     <!-- projects notification -->
                     <!-- if user is company or admin or support -->
                     @if(Auth::user()->permission == '3' || Auth::user()->permission == '0' || Auth::user()->permission == '1')
 
-<!--
-                    <li class="show-small" style="display:none">
-                            <a href="{{url('search/projects')}}" style=" color:green;padding-top:0">
-                                <i class="fa fa-bell" style="margin-top:-4px"></i> &nbsp;
-
-                                عرض كافه المشاريع
-                            </a>
-
-                    </li>
--->
 
                     <!---------------------------------------------------------------------->
                     <!---------------------------------------------------------------------->
                     
                     <li class="dropdown hide-small award-project bill-notification ">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+
+                            <span id="last-seen-project" class="hide">{{Auth::user()->last_seen_project}}</span>
+                            <span id="last-project" class="hide">
+                                @if(isset(\App\Project::latest()->first()->id))
+                                {{\App\Project::latest()->first()->id}}
+                                @else
+                                0
+                                @endif
+                            </span>
+
+
+                            <div class="pro-circle hide">
+
+                            </div>
+                            <i class="fa fa-bell" style=""></i>
+
+                        </a>
+                        
                         @include('front.notification.awardproject')
                     </li>
                     <!----------------------------------------------------------------------------------------->
@@ -213,6 +276,51 @@
 
 
                     <li class="dropdown hide-small bill-notification user-invoice">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill">
+
+
+                            <span id="last-seen-invoice" class="hide">{{Auth::user()->last_seen_invoice}}</span>
+
+                            <span id="last-invoice" class="hide">
+                                @if(isset(\App\Invoice::where('status', 1)
+                                ->whereHas('offer', function ($query) {
+                                $query->where('company_id', Auth::user()->id);
+                                })->latest()->first()->id))
+                                {{
+                               \App\Invoice::where('status', 1)
+                                ->whereHas('offer', function ($query) {
+                                    $query->where('company_id',  Auth::user()->id);
+                               })->latest()->first()->id
+                            }}
+                                @else
+                                0
+                                @endif
+                            </span>
+
+                            <span id="last-seen-notpaid-invoice" class="hide">{{Auth::user()->last_seen_notpaid_invoice}}</span>
+
+                            <span id="last-notpaid-invoice" class="hide">
+                                @if(isset(\App\Invoice::where('status', 0)
+                                ->whereHas('offer', function ($query) {
+                                $query->where('company_id', Auth::user()->id);
+                                })->latest()->first()->id))
+                                {{
+                               \App\Invoice::where('status', 0)
+                                ->whereHas('offer', function ($query) {
+                                    $query->where('company_id',  Auth::user()->id);
+                               })->latest()->first()->id
+                            }}
+                                @else
+                                0
+                                @endif
+                            </span>
+
+                            <div class="user-invoice-circle hide">
+
+                            </div>
+                            <i class="fa fa-bell" style=""></i>
+
+                        </a>
                         @include('front.notification.userinvoice')
                     </li>
                     <!-------------------------------------------------------------------------->
@@ -225,20 +333,27 @@
                     <!-- if user is owner -->
                     @if(Auth::user()->permission == '2')
 
-<!--
-                    <li class="show-small" style="display:none">
-                            <a href="{{url('projects')}}?project=non" style=" color:green;padding-top:0">
-                                <i class="fa fa-bell" style="margin-top:-4px"></i> &nbsp;
 
-                                كافه العروض
-                            </a>
-
-                    </li>
--->
                 <!------------------------------------------------------------------>                
                 <!------------------------------------------------------------------>        
                 
                     <li class="dropdown hide-small">
+                       <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill">
+
+                            <span id="last-seen-offer" class="hide">{{Auth::user()->last_seen_offer}}</span>
+                            <span id="last-offer" class="hide">
+                                @if(isset(\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id))
+                                {{\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id}}
+                                @else
+                                0
+                                @endif
+                            </span>
+                            <div class="offer-circle hide">
+
+                            </div>
+                            <i class="fa fa-bell" style=""></i>
+
+                        </a>
                         @include('front.notification.offer')
                     </li>
                     @endif

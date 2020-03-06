@@ -61,6 +61,8 @@ body{
     color: #FFF;
 }
 
+
+
 .active .pro-circle, .active .offer-circle, .active .user-invoice-circle {
     top: 12px;
     left: 15px;
@@ -113,6 +115,15 @@ button.close{
     .navbar>.container-fluid .navbar-brand-centered {
         margin-left: -80px;
     }
+ 
+}
+
+
+@media screen and (max-width:768px){
+       .user-invoice-circle{
+        top:0px
+    }
+ 
 }
 
 #second_nav{

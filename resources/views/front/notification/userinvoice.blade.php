@@ -1,48 +1,4 @@
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill">
 
-
-                            <span id="last-seen-invoice" class="hide">{{Auth::user()->last_seen_invoice}}</span>
-
-                            <span id="last-invoice" class="hide">
-                                @if(isset(\App\Invoice::where('status', 1)
-                                ->whereHas('offer', function ($query) {
-                                $query->where('company_id', Auth::user()->id);
-                                })->latest()->first()->id))
-                                {{
-                               \App\Invoice::where('status', 1)
-                                ->whereHas('offer', function ($query) {
-                                    $query->where('company_id',  Auth::user()->id);
-                               })->latest()->first()->id
-                            }}
-                                @else
-                                0
-                                @endif
-                            </span>
-
-                            <span id="last-seen-notpaid-invoice" class="hide">{{Auth::user()->last_seen_notpaid_invoice}}</span>
-
-                            <span id="last-notpaid-invoice" class="hide">
-                                @if(isset(\App\Invoice::where('status', 0)
-                                ->whereHas('offer', function ($query) {
-                                $query->where('company_id', Auth::user()->id);
-                                })->latest()->first()->id))
-                                {{
-                               \App\Invoice::where('status', 0)
-                                ->whereHas('offer', function ($query) {
-                                    $query->where('company_id',  Auth::user()->id);
-                               })->latest()->first()->id
-                            }}
-                                @else
-                                0
-                                @endif
-                            </span>
-
-                            <div class="user-invoice-circle hide">
-
-                            </div>
-                            <i class="fa fa-bell" style=""></i>
-
-                        </a>
                         <ul class="dropdown-menu user-invoice-menu" style="left:0; right:auto; width:300px; padding: 0 1px;max-height: 500px; overflow-y: auto; overflow-x:hidden">
 
                             @foreach(user_invoices() as $notification)

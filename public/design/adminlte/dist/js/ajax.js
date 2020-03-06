@@ -74,6 +74,7 @@ $(function() {
                         if(data.unseen > 0){
                             $('.msg-circle').removeClass('hide');
                             $('#unseen-count').text(data.unseen);
+                            $('#unseen-count-sm').text(data.unseen);
                             
                         }
                     }
@@ -99,6 +100,7 @@ $(function() {
                         if(data.last_pro_id > $('#last-project').text()){
                             // last_project = data.last_pro_id;
                             $('#last-project').text(data.last_pro_id);
+                            $('#last-project-sm').text(data.last_pro_id);
                             $('.pro-circle').removeClass('hide');
                         }                    
 
@@ -131,11 +133,13 @@ $(function() {
                         
                         if(data.last_notpaid_invoice_id > $('#last-notpaid-invoice').text()){
                             $('#last-notpaid-invoice').text(data.last_notpaid_invoice_id);
+                            $('#last-notpaid-invoice-sm').text(data.last_notpaid_invoice_id);
                             $('.user-invoice-circle').removeClass('hide');
                         }
                         
                         if(data.last_invoice_id > $('#last-invoice').text()){
                             $('#last-invoice').text(data.last_invoice_id);
+                            $('#last-invoice-sm').text(data.last_invoice_id);
                             $('.user-invoice-circle').removeClass('hide'); 
                         }
                         
@@ -166,6 +170,7 @@ $(function() {
                         $('.dropdown .offer-menu').html(data.data);
                         if(data.last_offer_id > Number($('#last-offer').text())){
                             $('#last-offer').text(data.last_offer_id);
+                            $('#last-offer-sm').text(data.last_offer_id);
                             $('.offer-circle').removeClass('hide');
                         }
                         
@@ -272,8 +277,61 @@ $(function() {
 
     });
     
+    
+    $('#user-invoice-bill-sm').click(function(){
+  
+        /***/
+            $.ajax({
+               url: url+'/last-seen-project',
+               method: 'POST',
+               data: {
+                    _token: csrf_token,
+                   last_invoice_id : Number($('#last-invoice').text()),
+                   last_notpaid_invoice_id : Number($('#last-notpaid-invoice').text())
+               },
+               success:function(data)
+               {
+                   console.log(data);
+                   if(data.status == 'success'){
+                       /* overdate_invoice seen */
+                       if( (data.overdate_invoice_count == 0) ){
+                          $('.user-invoice-circle').addClass('hide');
+                       }
+                   }
+
+                }
+              
+            })
+        /***/
+
+    });
+    
 
     $('#offer-bill').click(function(){
+        
+        /***/
+            $.ajax({
+               url: url+'/last-seen-offer',
+               method: 'POST',
+               data: {
+                    _token: csrf_token,
+                   last_offer_id : Number($('#last-offer').text())
+               },
+               success:function(data)
+               {
+                   console.log(data);
+                   if(data.status == 'success'){
+                       $('.offer-circle').addClass('hide');
+                   }
+
+                }
+
+            })
+        /***/
+    });
+    
+    
+    $('#offer-bill-sm').click(function(){
         
         /***/
             $.ajax({

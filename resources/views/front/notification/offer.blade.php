@@ -1,19 +1,4 @@
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill">
 
-                            <span id="last-seen-offer" class="hide">{{Auth::user()->last_seen_offer}}</span>
-                            <span id="last-offer" class="hide">
-                                @if(isset(\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id))
-                                {{\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id}}
-                                @else
-                                0
-                                @endif
-                            </span>
-                            <div class="offer-circle hide">
-
-                            </div>
-                            <i class="fa fa-bell" style=""></i>
-
-                        </a>
                         <ul class="dropdown-menu offer-menu" style="left:0; right:auto; width:300px; padding: 0 1px; max-height: 500px; overflow-y: auto;">
                             @foreach(offerNotification() as $notification)
                             <!-- for evaluations -->

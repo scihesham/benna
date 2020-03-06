@@ -1,10 +1,4 @@
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <div class="msg-circle hide">
-                                <span id="unseen-count">{{$unseen_count}}</span>
-                            </div>
-                            <i class="fa fa-envelope" style=""></i>
 
-                        </a>
                         <ul class="dropdown-menu msg-menu" style="left:0; right:auto; width:300px; padding: 0 1px; max-height: 500px; overflow-y: auto;">
                             <?php $i = 0?>
                             @foreach(messagesNotification() as $msg)

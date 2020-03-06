@@ -2,27 +2,8 @@
                     <!---------------------------------------------------------------------->
                     
                     
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                            <!--
-                        <div class="pro-circle">
-                        </div>
--->
-                            <span id="last-seen-project" class="hide">{{Auth::user()->last_seen_project}}</span>
-                            <span id="last-project" class="hide">
-                                @if(isset(\App\Project::latest()->first()->id))
-                                {{\App\Project::latest()->first()->id}}
-                                @else
-                                0
-                                @endif
-                            </span>
 
 
-                            <div class="pro-circle hide">
-
-                            </div>
-                            <i class="fa fa-bell" style=""></i>
-
-                        </a>
                         <ul class="dropdown-menu project-menu" style="left:0; right:auto; width:300px; padding: 0 1px;max-height: 500px; overflow-y: auto; overflow-x:hidden">
 
 
