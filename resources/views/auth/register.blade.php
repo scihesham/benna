@@ -23,7 +23,7 @@
     
 @media only screen and (max-width: 767px) {
     .cont-nav.panel-heading{
-         height: 281px;
+         height: 360px;
     }
 }
     
@@ -60,7 +60,7 @@
                         @include('auth.contnav-reg')
                     </div>
                     @if($action == 'owner')
-                    <div class="panel-body" style="padding-top:0">
+                    <div class="panel-body owner-" style="padding-top:0">
                         <div class="">
                             <div class="non">
                                 <div class="row">
