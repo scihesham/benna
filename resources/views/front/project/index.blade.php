@@ -83,7 +83,7 @@
                                                     </a>
                                                 </td>
                                                 
-                                                <td class="text-center center-vc">{{ksaCities()[$project->city]}}</td>
+                                                <td class="text-center center-vc">{{$project->cityData->name}}</td>
                                                 
                                                 <td style="width:300px;" class="text-center"><textarea style="height:115px; width:95%; min-width: 120px;">{{$project->desc}}</textarea></td>
                                                                                                 

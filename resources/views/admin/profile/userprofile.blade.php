@@ -302,8 +302,8 @@
                             <div class="col-sm-6" style="padding-right:0; margin:30px auto; margin-top:0">
                                 <label>المدينه</label>
                                 <select class="form-control" name="city" style="font-size:19px">
-                                    @foreach(ksaCities() as $key => $val)
-                                    <option value="{{$key}}" {{$user->company->city == $key ? 'selected' : ''}}>{{$val}}</option>
+                                    @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
+                                    <option value="{{$city->id}}" {{$user->company->cityData->id == $city->id ? 'selected' : ''}}>{{$city->name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('city'))
@@ -410,8 +410,8 @@
                             <div class="col-sm-6" style="padding-right:0; margin:30px auto; margin-top:0">
                                 <label>المدينه</label>
                                 <select class="form-control" name="city" required  style="font-size:19px">
-                                    @foreach(ksaCities() as $key => $val)
-                                    <option value="{{$key}}" {{$user->institute->city == $key ? 'selected' : ''}}>{{$val}}</option>
+                                    @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
+                                    <option value="{{$city->id}}" {{$user->institute->cityData->id == $city->id ? 'selected' : ''}}>{{$city->name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('city'))

@@ -141,11 +141,11 @@
                                         <span class="col-sm-2 col-xs-12 filter" style="">
                                             <select class="form-control" id="city-filter" style="font-size:17px">
                                                 <option value="all">جميع المدن</option>
-                                                @foreach(ksaCities() as $key => $val)
+                                                @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
                                                     @if(!empty($city_num) || $city_num=='0')
-                                                    <option value="{{$key}}" {{$city_num==$key ? 'selected' : '' }}>{{$val}}</option>
+                                                    <option value="{{$city->id}}" {{$city_num==$city->id ? 'selected' : '' }}>{{$city->name}}</option>
                                                     @else
-                                                    <option value="{{$key}}">{{$val}}</option>
+                                                    <option value="{{$city->id}}">{{$city->name}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -203,7 +203,7 @@
                                                                 
                                                                 <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:10px; font-weight:bold">
                                                                     <i class="fa fa-map-marker" style="margin-left: 2px;"></i>
-                                                                    {{ksaCities()[$project->city]}}
+                                                                    {{$project->cityData->name}}
                                                                 </div>
 
 

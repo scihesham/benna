@@ -31,4 +31,9 @@ class Project extends Model
         return $this->hasOne('App\Evaluation')->withDefault();
     }
     
+    
+    public function cityData(){
+        return $this->hasOne('App\City', 'id', 'city')->withDefault();
+    }
+    
 }

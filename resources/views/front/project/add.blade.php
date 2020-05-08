@@ -77,8 +77,8 @@
                                 </label>
                                 <select type="text" class="form-control" name="city" id="city" required="required">
                                     <option value="">...</option>
-                                    @foreach(ksaCities() as $key => $city)
-                                    <option value="{{$key}}">{{$city}}</option>
+                                    @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
                                     @endforeach
 
                                 </select>

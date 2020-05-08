@@ -431,8 +431,8 @@
                                             <label>المدينه</label>
                                             <select class="form-control" name="city" style="width:100%;height:40px;font-size:19px" required>
                                                 <option>...</option>
-                                                @foreach(ksaCities() as $key => $city)
-                                                <option value="{{$key}}">{{$city}}</option>
+                                                @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -654,8 +654,8 @@
                                             <label>المدينه</label>
                                             <select class="form-control" name="city" style="width:100%;height:40px;font-size:19px" required>
                                                 <option>...</option>
-                                                @foreach(ksaCities() as $key => $city)
-                                                <option value="{{$key}}">{{$city}}</option>
+                                                @foreach(\App\City::orderBy('ordering', 'asc')->get() as $key => $city)
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

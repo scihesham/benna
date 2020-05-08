@@ -51,7 +51,7 @@
                         <tr class="">
                             <td>{{$key+1}}</td>
                             <td class="text-center center-vc">{{$project->title}}</td>
-                            <td class="text-center center-vc">{{ksaCities()[$project->city]}}</td>
+                            <td class="text-center center-vc">{{$project->cityData->name}}</td>
                             <td style="width:300px;" class="text-center"><textarea style="height:115px; width:95%;">{{$project->desc}}</textarea></td>
                             
                             

@@ -56,6 +56,18 @@
             
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-university" aria-hidden="true"></i> <span>المدن</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('admin/cities')}}"><i class="fa fa-circle-o"></i> المدن</a></li>
+                </ul>
+            </li>
+            
+            <li class="treeview">
+                <a href="#">
                    <i class="fa fa-gavel" aria-hidden="true"></i> <span>المنازعات</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>

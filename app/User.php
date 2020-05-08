@@ -69,6 +69,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Attachment', 'attachment_id')->withDefault();
     }
     
+
+    
 }
 
 

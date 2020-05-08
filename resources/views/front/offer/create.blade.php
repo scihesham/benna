@@ -313,7 +313,7 @@
                     </div>
                     <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:20px; font-weight:bold">
                       <i class="fa fa-map-marker" style="margin-left: 2px;"></i>
-                     {{ksaCities()[$project->city]}}
+                     {{$project->cityData->name}}
                    </div>
                     @if(isset($project->attachment_id))
                     <div class="col-sm-12" style="margin-top:20px">

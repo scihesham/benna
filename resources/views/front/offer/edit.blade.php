@@ -270,7 +270,7 @@
                     
                     <div class="col-sm-12" style="color:#75787d;overflow-wrap: break-word; word-break: break-word; word-wrap: break-word;margin-top:20px; font-weight:bold">
                       <i class="fa fa-map-marker" style="margin-left: 2px;"></i>
-                     {{ksaCities()[$offer->project->city]}}
+                     {{$offer->project->cityData->name}}
                    </div>
                                                                       
                     @if(isset($offer->project->attachment_id))
