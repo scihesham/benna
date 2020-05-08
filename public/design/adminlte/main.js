@@ -365,6 +365,25 @@ $(document).ready(function () {
     /***********************************************************/
     
     
+    /********************** city ajax ***********************/
+    /**
+     * get update city form
+     */
+
+    $('.update_city_link').click(function () {
+        $.ajax({
+            url: $(this).data('href'),
+            type: 'get',
+            dataType: 'html',
+            success: function (data) {
+                $('.update_city_modal .modal-body').html(data);
+            }
+        })
+    });
+
+    /***********************************************************/
+    
+    
     
     /*************************** user ajax ************************/
 

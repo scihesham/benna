@@ -49,5 +49,10 @@ Route::group(['middleware' => ['web', 'admin']], function(){
  Route::get('admin/notification/invoice', 'InvoiceController@invoiceNotification');
  Route::get('admin/notification/overdate-invoice', 'InvoiceController@overdateInvoiceNotification');
     
+    
+ /* CityController */
+ Route::resource('admin/cities', 'CityController');
+ Route::get('admin/cities/{id}/delete', 'CityController@destroy');
+    
 });
 
