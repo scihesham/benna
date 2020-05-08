@@ -362,10 +362,9 @@ input[type=file] {font-size: 16px !important}
 }
 
 .logo-footer .year{
-    width: 179px;
     bottom: 0;
     position: absolute;
-    left: calc(50% - 255px);
+    right: calc(50% + 64px);
     font-size: 20px;
     color: #FFF;
     background: none
@@ -503,8 +502,7 @@ input[type=file] {font-size: 16px !important}
     .footer-logo img{width: 60px !important}
     .logo-footer .copyright{ width: 130px; left: calc(50% + 20px);  font-size: 14px; }
     .logo-footer .year{
-    width: 150px;
-    left: calc(50% - 200px);
+    right: calc(50% + 46px);
     font-size: 14px;
     }
     .col-xs-2.offer-val{  padding-left: 0; padding-right: 5px;}

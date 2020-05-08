@@ -126,11 +126,10 @@
         <div style="position:relative">
             <p class="copyright">جميع الحقوق محفوظه لموقع</p>
             <img style="width:120px" src="{{url('public/design/mandoby')}}/images/logo2_part_1.png">
-            <p class="year">2020</p>
+            <p class="year" style="">2020</p>
         </div>
     </div>
 </div>
-
 
 <!--==================== copyright =========-->
 
