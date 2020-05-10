@@ -4,8 +4,8 @@
 <div class="navbar navbar-default" role="navigation" id="slide-nav">
     <div class="container">
 -->
-    
-                                
+
+
     <nav class="navbar navbar-default ">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -17,9 +17,9 @@
                 </a>
 
             </div>
-@if(Auth::user())
-            
-     <?php
+            @if(Auth::user())
+
+            <?php
         $unseen_count = 0;
         foreach(messagesNotification() as $msg){
             if(isset($msg->offer->project->title)){
@@ -29,123 +29,124 @@
             }
         }
       ?>
-            
-
-            
-    @if(Auth::user()->permission == '3' || Auth::user()->permission == '0' || Auth::user()->permission == '1')
-
-        <li class="dropdown show-small bill-notification award-project text-left" style="display:none;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-
-                <span id="last-seen-project-sm" class="hide">{{Auth::user()->last_seen_project}}</span>
-                <span id="last-project-sm" class="hide">
-                    @if(isset(\App\Project::latest()->first()->id))
-                    {{\App\Project::latest()->first()->id}}
-                    @else
-                    0
-                    @endif
-                </span>
 
 
-                <div class="pro-circle hide">
 
-                </div>
-                <i class="fa fa-bell" style=""></i>
+            @if(Auth::user()->permission == '3' || Auth::user()->permission == '0' || Auth::user()->permission == '1')
 
-            </a>
-            
-            @include('front.notification.awardproject')
-        </li>
+            <li class="dropdown show-small bill-notification award-project text-left" style="display:none;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
-        <li class="dropdown show-small bill-notification user-invoice text-left" style="display:none;">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill-sm">
+                    <span id="last-seen-project-sm" class="hide">{{Auth::user()->last_seen_project}}</span>
+                    <span id="last-project-sm" class="hide">
+                        @if(isset(\App\Project::latest()->first()->id))
+                        {{\App\Project::latest()->first()->id}}
+                        @else
+                        0
+                        @endif
+                    </span>
 
 
-                            <span id="last-seen-invoice-sm" class="hide">{{Auth::user()->last_seen_invoice}}</span>
+                    <div class="pro-circle hide">
 
-                            <span id="last-invoice-sm" class="hide">
-                                @if(isset(\App\Invoice::where('status', 1)
-                                ->whereHas('offer', function ($query) {
-                                $query->where('company_id', Auth::user()->id);
-                                })->latest()->first()->id))
-                                {{
+                    </div>
+                    <i class="fa fa-bell" style=""></i>
+
+                </a>
+
+                @include('front.notification.awardproject')
+            </li>
+
+            <li class="dropdown show-small bill-notification user-invoice text-left" style="display:none;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill-sm">
+
+
+                    <span id="last-seen-invoice-sm" class="hide">{{Auth::user()->last_seen_invoice}}</span>
+
+                    <span id="last-invoice-sm" class="hide">
+                        @if(isset(\App\Invoice::where('status', 1)
+                        ->whereHas('offer', function ($query) {
+                        $query->where('company_id', Auth::user()->id);
+                        })->latest()->first()->id))
+                        {{
                                \App\Invoice::where('status', 1)
                                 ->whereHas('offer', function ($query) {
                                     $query->where('company_id',  Auth::user()->id);
                                })->latest()->first()->id
                             }}
-                                @else
-                                0
-                                @endif
-                            </span>
+                        @else
+                        0
+                        @endif
+                    </span>
 
-                            <span id="last-seen-notpaid-invoice-sm" class="hide">{{Auth::user()->last_seen_notpaid_invoice}}</span>
+                    <span id="last-seen-notpaid-invoice-sm" class="hide">{{Auth::user()->last_seen_notpaid_invoice}}</span>
 
-                            <span id="last-notpaid-invoice-sm" class="hide">
-                                @if(isset(\App\Invoice::where('status', 0)
-                                ->whereHas('offer', function ($query) {
-                                $query->where('company_id', Auth::user()->id);
-                                })->latest()->first()->id))
-                                {{
+                    <span id="last-notpaid-invoice-sm" class="hide">
+                        @if(isset(\App\Invoice::where('status', 0)
+                        ->whereHas('offer', function ($query) {
+                        $query->where('company_id', Auth::user()->id);
+                        })->latest()->first()->id))
+                        {{
                                \App\Invoice::where('status', 0)
                                 ->whereHas('offer', function ($query) {
                                     $query->where('company_id',  Auth::user()->id);
                                })->latest()->first()->id
                             }}
-                                @else
-                                0
-                                @endif
-                            </span>
+                        @else
+                        0
+                        @endif
+                    </span>
 
-                            <div class="user-invoice-circle hide">
+                    <div class="user-invoice-circle hide">
 
-                            </div>
-                            <i class="fa fa-bell" style=""></i>
+                    </div>
+                    <i class="fa fa-bell" style=""></i>
 
-                        </a>
-            @include('front.notification.userinvoice')
-        </li>
-            
-       
+                </a>
+                @include('front.notification.userinvoice')
+            </li>
 
-    @endif
-            
-    @if(Auth::user()->permission == '2' )
-        <li class="dropdown show-small text-left" style="display:none;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill-sm">
 
-                <span id="last-seen-offer-sm" class="hide">{{Auth::user()->last_seen_offer}}</span>
-                <span id="last-offer-sm" class="hide">
-                    @if(isset(\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id))
-                    {{\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id}}
-                    @else
-                    0
-                    @endif
-                </span>
-                <div class="offer-circle hide">
 
-                </div>
-                <i class="fa fa-bell" style=""></i>
+            @endif
 
-            </a>
-            @include('front.notification.offer')
-        </li>
-    @endif
-            
-            
-    <li class="dropdown show-small msg-sm" style="display:none; {{Auth::user()->permission == '3' ? 'left:120px;' : ''}}">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <div class="msg-circle hide">
-                <span id="unseen-count-sm">{{$unseen_count}}</span>
-            </div>
-            <i class="fa fa-envelope" style=""></i>
+            @if(Auth::user()->permission == '2' )
+            <li class="dropdown show-small text-left" style="display:none;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill-sm">
 
-        </a>
-        @include('front.notification.message')
-    </li>
+                    <span id="last-seen-offer-sm" class="hide">{{Auth::user()->last_seen_offer}}</span>
+                    <span id="last-offer-sm" class="hide">
+                        @if(isset(\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id))
+                        {{\App\OfferStatus::where('owner_id', Auth::user()->id)->latest()->first()->id}}
+                        @else
+                        0
+                        @endif
+                    </span>
+                    <div class="offer-circle hide">
 
-@endif
-            
+                    </div>
+                    <i class="fa fa-bell" style=""></i>
+
+                </a>
+                @include('front.notification.offer')
+            </li>
+            @endif
+
+            @if(Auth::user()->permission != '0' )     
+            <li class="dropdown show-small msg-sm" style="display:none; {{Auth::user()->permission == '3' ? 'left:120px;' : ''}}">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <div class="msg-circle hide">
+                        <span id="unseen-count-sm">{{$unseen_count}}</span>
+                    </div>
+                    <i class="fa fa-envelope" style=""></i>
+
+                </a>
+                @include('front.notification.message')
+            </li>
+            @endif
+
+            @endif
+
             <div class="collapse navbar-collapse" id="navbar-brand-centered" style="float: right;">
                 <ul class="nav navbar-nav" id="sec" style="background:#0067ab !important">
                     <li class=" active" id=""><a href="{{url('/')}}">
@@ -228,7 +229,7 @@
 
                     @if(Auth::user())
 
-
+                    @if(Auth::user()->permission != '0' )
                     <li class="dropdown hide-small">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <div class="msg-circle hide">
@@ -239,6 +240,7 @@
                         </a>
                         @include('front.notification.message')
                     </li>
+                    @endif
                     <!-- projects notification -->
                     <!-- if user is company or admin or support -->
                     @if(Auth::user()->permission == '3' || Auth::user()->permission == '0' || Auth::user()->permission == '1')
@@ -246,9 +248,9 @@
 
                     <!---------------------------------------------------------------------->
                     <!---------------------------------------------------------------------->
-                    
+
                     <li class="dropdown hide-small award-project bill-notification ">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
                             <span id="last-seen-project" class="hide">{{Auth::user()->last_seen_project}}</span>
                             <span id="last-project" class="hide">
@@ -266,7 +268,7 @@
                             <i class="fa fa-bell" style=""></i>
 
                         </a>
-                        
+
                         @include('front.notification.awardproject')
                     </li>
                     <!----------------------------------------------------------------------------------------->
@@ -276,7 +278,7 @@
 
 
                     <li class="dropdown hide-small bill-notification user-invoice">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user-invoice-bill">
 
 
                             <span id="last-seen-invoice" class="hide">{{Auth::user()->last_seen_invoice}}</span>
@@ -334,11 +336,11 @@
                     @if(Auth::user()->permission == '2')
 
 
-                <!------------------------------------------------------------------>                
-                <!------------------------------------------------------------------>        
-                
+                    <!------------------------------------------------------------------>
+                    <!------------------------------------------------------------------>
+
                     <li class="dropdown hide-small">
-                       <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offer-bill">
 
                             <span id="last-seen-offer" class="hide">{{Auth::user()->last_seen_offer}}</span>
                             <span id="last-offer" class="hide">
