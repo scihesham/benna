@@ -95,19 +95,19 @@
 
                 </div>
                 
-                <div class="col-sm-12 text-right social-full-cont" style="direction:rtl; color:#FFF">
-                    <!--<div class="">-->
+                <div class="col-sm-12 text-right " style="direction:rtl; color:#FFF">
+                    <div class="">
                     <!--    <span id="bin" style="font-size: 20px ">Binrasheddecore</span>-->
-                    <!--    <a class="social" href="#">-->
-                    <!--        <i class="fa fa-instagram"></i>-->
-                    <!--    </a>-->
+                        <a class="social" href="https://instagram.com/bennaquick?igshid=u0dr3in3h17h" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                        </a>
                     <!--    <a class="social" href="#">-->
                     <!--        <i class="fa fa-facebook"></i>-->
                     <!--    </a>-->
-                    <!--    <a class="social" href="#">-->
-                    <!--        <i class="fa fa-twitter"></i>-->
-                    <!--    </a>-->
-                    <!--</div>-->
+                        <a class="social" href="https://twitter.com/bennaquick?s=09" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 

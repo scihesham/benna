@@ -252,9 +252,18 @@ input[type=file] {
 
 .footer .social, .footer-sec .social{
     display: inline-block;
-    background: #FFF;
-    width: 16px;
+/*    background: #FFF;*/
+    width: 18px;
     text-align: center;
+    margin: 15px;
+}
+
+.footer .social, .footer-sec .social{
+    color: #FFF
+}
+
+.footer .social i, .footer-sec .social i{
+    font-size: 24px
 }
 
 #photo-title{
