@@ -83,7 +83,11 @@
 <div style="width:100%; position:relative">
 <img src="{{url('public/design/mandoby')}}/images/slider1.jpg" style="width:100%;">
     <div id="photo-title" style="position:absolute">
-    <p>اضف مشروعك هنا</p>
+    @if(!Auth::user() || Auth::user()->permission == 2)
+    <a href="{{url('projects/create')}}" style="text-decoration: none;">
+        <p>اضف مشروعك هنا</p>
+    </a>
+        @endif
     @if(!Auth::user())
     <a href="{{url('register?action=owner')}}" style='text-decoration:none'><span>اشترك الان</span></a>
     @endif
